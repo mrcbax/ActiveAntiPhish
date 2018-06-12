@@ -7,3 +7,4 @@ This repo takes advantage of a technique called database saturation. If your org
 It generates hundreds of fake username/password pairs that are injected into the phishing page.
 
 The theory is that the phisher will abandon their database as validating thousands of fake accounts just to find the small amount of valid accounts is very annoying. 
+This project maintains a collection of active and inactive phish kits that are unredacted. They are encrypted to protect from leechers. Please see `kits/_PASSWORD.md`.
