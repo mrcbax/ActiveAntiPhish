@@ -28,5 +28,5 @@ rule phishkit {
 
 
     condition:
-        6 of them
+        $php_header and $php_footer and 6 of them
 }
