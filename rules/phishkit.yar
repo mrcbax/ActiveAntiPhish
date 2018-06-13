@@ -22,9 +22,11 @@ rule generic_phishkit {
         $credential_harvest4 = "$_POST['Passwd']" nocase
         $email_exfil_headers = "MIME-Version: 1.0" nocase
         $email_exfil = "mail(" nocase
+        $file_exfil = "fopen(" nocase
+        $file_exfil2 = "fputs(" nocase
         $log_tags = "Vict!m" nocase
         $log_tags2 = "Created BY" nocase
-        $redirect = "header(\"Location: " nocase
+        $redirect = "header(" nocase
         $code_comments = "//change ur email here"
         $php_header = "<?php"
         $php_header2 = "<?"
