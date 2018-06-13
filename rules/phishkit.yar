@@ -90,3 +90,16 @@ rule dropbox_phishkit {
         hash.sha256(0, filesize) == "2573c007b4e2a0e212000aaa890f74ed93131f19bdd6b007d38d5838a3b7213b"
 
 }
+
+rule adobe_phishkit {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        created_on = "2018-06-12"
+        description = "Known Adobe PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) == "40af3b2320e8b96dade4e833e1bb69dc358e7d3a8d2c7e7f861bd7029b7a37ed"
+
+}
