@@ -1,4 +1,4 @@
-rule phishkit {
+rule generic_phishkit {
 
     meta:
         author = "Chad Baxter"
@@ -23,10 +23,11 @@ rule phishkit {
         $log_tags2 = "Created BY" nocase
         $redirect = "header(\"Location: " nocase
         $code_comments = "//change ur email here"
-        $php_header = "<?"
+        $php_header = "<?php"
+        $php_header2 = "<?"
         $php_footer = "?>"
 
 
     condition:
-        $php_header and $php_footer and 6 of them
+        ($php_header or $php_header2) and $php_footer and 6 of them
 }
