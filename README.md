@@ -6,7 +6,7 @@ Since the new Georgia hack back law is making its way through Congress this repo
 
 Theory
 ---
-This repo takes advantage of a technique called database saturation. If your organization is successfully phished this tool allows the organization to decrease the signal to noise ratio of the hacker's stolen credentials. This is done by providing the tool with a fake password list, fake username list, proxy list, the phishing page's callback url, and your organizations email domain extension.
+This repo takes advantage of a technique called database saturation. If your organization is successfully phished this tool allows the organization to increase the noise in the signal to noise ratio of the hacker's stolen credentials. This is done by providing the tool with a fake password list, fake username list, proxy list, the phishing page's callback url, and your organizations email domain extension.
 
 It generates hundreds of fake username/password pairs that are injected into the phishing page.
 
