@@ -5,8 +5,8 @@ rule phishkit_generic {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-12"
-        updated_on = "2018-06-13"
+        date = "2018-06-12"
+        updated = "2018-06-13"
         description = "Triggers on php files that contain indicators that the file is used for stolen credential exfiltration."
 
     strings:
@@ -55,7 +55,7 @@ rule phishkit_uids {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-13"
+        date = "2018-06-13"
         description = "Unique IDs used in phish kits, often emails, usernames, and numbers. This may trigger many false positives depending on what you are scanning"
 
     strings:
@@ -107,7 +107,7 @@ rule phishkit_docusign {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-12"
+        date = "2018-06-12"
         description = "Known Docusign PhishKits"
 
     condition:
@@ -121,7 +121,7 @@ rule phishkit_google {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-11"
+        date = "2018-06-11"
         description = "Known Google PhishKits"
 
     condition:
@@ -134,7 +134,8 @@ rule phishkit_microsoft {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-12"
+        date = "2018-06-12"
+        updated = "2018-06-13"
         description = "Known Microsoft PhishKits"
 
     condition:
@@ -160,7 +161,7 @@ rule phishkit_dropbox {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-12"
+        date = "2018-06-12"
         description = "Known DropBox PhishKits"
 
     condition:
@@ -174,7 +175,7 @@ rule phishkit_adobe {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-12"
+        date = "2018-06-12"
         description = "Known Adobe PhishKits"
 
     condition:
@@ -188,7 +189,7 @@ rule phishkit_banking {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        created_on = "2018-06-13"
+        date = "2018-06-13"
         description = "Known banking PhishKits"
 
     condition:
