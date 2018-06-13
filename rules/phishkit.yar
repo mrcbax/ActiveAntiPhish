@@ -1,43 +1,108 @@
 import "hash"
 
-rule generic_phishkit {
+rule phishkit_generic {
 
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         created_on = "2018-06-12"
+        updated_on = "2018-06-13"
         description = "Triggers on php files that contain indicators that the file is used for stolen credential exfiltration."
 
     strings:
-        $geo_detection = "geoplugin" nocase
-        $geo_detection2 = "geoiptool" nocase
+        $geo_detection0 = "geoplugin" nocase
+        $geo_detection1 = "geoiptool" nocase
         $UA_detection = "$_SERVER['HTTP_USER_AGENT']" nocase
-        $IP_detection = "$_SERVER['HTTP_CLIENT_IP']" nocase
-        $IP_detection2 = "$_SERVER['REMOTE_ADDR']" nocase
-        $IP_detection3 = "gethostbyaddr(" nocase
+        $IP_detection0 = "$_SERVER['HTTP_CLIENT_IP']" nocase
+        $IP_detection1 = "$_SERVER['REMOTE_ADDR']" nocase
+        $IP_detection2 = "gethostbyaddr(" nocase
+        $IP_detection3 = "getenv(\"REMOTE_ADDR\")"
         $timestamping = "date(" nocase
-        $credential_harvest = "$_POST['userid']" nocase
-        $credential_harvest2 = "$_POST['pass']" nocase
-        $credential_harvest3 = "$_POST['Email']" nocase
-        $credential_harvest4 = "$_POST['Passwd']" nocase
+        $credential_harvest0 = "$_POST['userid']" nocase
+        $credential_harvest1 = "$_POST['pass']" nocase
+        $credential_harvest2 = "$_POST['Email']" nocase
+        $credential_harvest3 = "$_POST['Passwd']" nocase
+        $credential_harvest4 = "$_POST['username']" nocase
+        $credential_harvest5 = "$_POST['eMailAdd']" nocase
+        $credential_harvest6 = "$_POST['recEmail']" nocase
+        $credentail_harvest7 = "$_POST['phoneNumber']" nocase
+        $credential_harvest8 = "$_POST['em']" nocase
+        $credentail_harvest9 = "$_POST['psw']" nocase
         $email_exfil_headers = "MIME-Version: 1.0" nocase
         $email_exfil = "mail(" nocase
-        $file_exfil = "fopen(" nocase
-        $file_exfil2 = "fputs(" nocase
-        $log_tags = "Vict!m" nocase
-        $log_tags2 = "Created BY" nocase
+        $file_exfil0 = "fopen(" nocase
+        $file_exfil1 = "fputs(" nocase
+        $log_tags0 = "Vict!m" nocase
+        $log_tags1 = "Created BY" nocase
+        $log_tags2 = "You have a new drop" nocase
         $redirect = "header(" nocase
-        $code_comments = "//change ur email here"
+        $code_comments0 = "//change ur email here"
+        $code_comments1 = "---"
+        $code_comments2 = "==="
+        $code_comments3 = "+++"
         $php_header = "<?php"
         $php_header2 = "<?"
         $php_footer = "?>"
 
 
     condition:
-        any of ($php*) and 6 of them
+        any of ($php*) and any of ($credential_harvest*) and any of ($*exfil*)
+        and 3 of them
 }
 
-rule docusign_phishkit {
+rule phishkit_uids {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        created_on = "2018-06-13"
+        description = "Unique IDs used in phish kits, often emails, usernames, and numbers. This may trigger many false positives depending on what you are scanning"
+
+    strings:
+        $0 = "garrethwebb010"
+        $1 = "xConsoLe"
+        $2 = "+nJoY+"
+        $3 = "dddresult"
+        $4 = "office465"
+        $5 = "office3655"
+        $5 = "phishtank" //used in blocking scripts that block the good guy crawlers.
+        $6 = "strictlydomain"
+        $7 = "*B0y"
+        $8 = "doublerror404"
+        $9 = "gxn31lb1hn5th2kp66zl60tw"
+        $10 = "t2ladon"
+        $11 = "valentinacare11"
+        $12 = "neversaydie"
+        $13 = "shrtt111"
+        $14 = "supertool"
+        $15 = "kevin9angelo"
+        $16 = "ISI PESAN" nocase
+        $17 = "Spam Result" nocase
+        $18 = "freshdude001"
+        $19 = "valinc0147"
+        $20 = "NC3778N12E999MDM3429" nocase
+        $21 = "MR.Int.Tunisien"
+        $22 = "ABCDEMN0123456789" //create regex for filenames created with the function that uses these characters for random filenames. Filenames are 20 chars long.
+        $23 = "JOkEr7"
+        $24 = "dropyefe"
+        $25 = "LvRxDnOnA" nocase
+        $26 = "666133716"
+        $27 = "tacomrcreator"
+        $28 = "jamonte drop" nocase
+        $29 = "goggle.comm"
+        $30 = "REEHDG78273"
+        $40 = "HBUD8373293"
+        $41 = "BigNattY"
+        $42 = "franksam12340"
+        $43 = "jameshang12340"
+
+    condition:
+        any of them
+
+
+}
+
+rule phishkit_docusign {
 
     meta:
         author = "Chad Baxter"
@@ -51,7 +116,7 @@ rule docusign_phishkit {
 
 }
 
-rule google_phishkit {
+rule phishkit_google {
 
     meta:
         author = "Chad Baxter"
@@ -65,7 +130,7 @@ rule google_phishkit {
 
 }
 
-rule microsoft_phishkit {
+rule phishkit_microsoft {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
@@ -90,7 +155,7 @@ rule microsoft_phishkit {
 
 }
 
-rule dropbox_phishkit {
+rule phishkit_dropbox {
 
     meta:
         author = "Chad Baxter"
@@ -104,7 +169,7 @@ rule dropbox_phishkit {
 
 }
 
-rule adobe_phishkit {
+rule phishkit_adobe {
 
     meta:
         author = "Chad Baxter"
@@ -118,7 +183,7 @@ rule adobe_phishkit {
 
 }
 
-rule banking_phishkit {
+rule phishkit_banking {
 
     meta:
         author = "Chad Baxter"
