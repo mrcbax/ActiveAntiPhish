@@ -34,7 +34,7 @@ rule generic_phishkit {
 
 
     condition:
-        ($php_header or $php_header2) and $php_footer and 6 of them
+        any of ($php*) and 6 of them
 }
 
 rule docusign_phishkit {
@@ -46,7 +46,8 @@ rule docusign_phishkit {
         description = "Known Docusign PhishKits"
 
     condition:
-        hash.sha256(0, filesize) == "9136e3ca8d6425e9ccc529accfb6e321e3048b7e84c87940b9f40297bc704120"
+        hash.sha256(0, filesize) ==
+        "9136e3ca8d6425e9ccc529accfb6e321e3048b7e84c87940b9f40297bc704120"
 
 }
 
@@ -59,7 +60,8 @@ rule google_phishkit {
         description = "Known Google PhishKits"
 
     condition:
-        hash.sha256(0, filesize) == "1cc4118e6e16ce0ea202a0576f616b72f5ef809cef559ca8d57a75ae994f3430"
+        hash.sha256(0, filesize) ==
+        "1cc4118e6e16ce0ea202a0576f616b72f5ef809cef559ca8d57a75ae994f3430"
 
 }
 
@@ -71,10 +73,20 @@ rule microsoft_phishkit {
         description = "Known Microsoft PhishKits"
 
     condition:
-        hash.sha256(0, filesize) == "2b64dd4eb9357254ca8315df7b03858b2b8b10d556065c71ff2b7218dc2a2a3d" or
-        hash.sha256(0, filesize) == "cb1d550d55af7e3a8c327e829fa5686fb6a27295cd0839b13aca4484127fda92" or
-        hash.sha256(0, filesize) == "a963f7907009c1cdcb49b4a8a36a0de38e801aa67dbbf949f75a3f1294abb530" or
-        hash.sha256(0, filesize) == "562a172e0957278b6c0f1f047b0a2e48187fb91d1d96b76f24f26ccc05cc6c5b"
+        hash.sha256(0, filesize) ==
+        "2b64dd4eb9357254ca8315df7b03858b2b8b10d556065c71ff2b7218dc2a2a3d" or
+        hash.sha256(0, filesize) ==
+        "cb1d550d55af7e3a8c327e829fa5686fb6a27295cd0839b13aca4484127fda92" or
+        hash.sha256(0, filesize) ==
+        "a963f7907009c1cdcb49b4a8a36a0de38e801aa67dbbf949f75a3f1294abb530" or
+        hash.sha256(0, filesize) ==
+        "562a172e0957278b6c0f1f047b0a2e48187fb91d1d96b76f24f26ccc05cc6c5b" or
+        hash.sha256(0, filesize) ==
+        "86324ead56827e09121baffd919e4e6b972eef68fed1ef972860242d331555f7" or
+        hash.sha256(0, filesize) ==
+        "c107e45c35c979f9347f2c43c616b967fea409dad905c8297e939571d75fc6bc" or
+        hash.sha256(0, filesize) ==
+        "f3695975ee6c330514836b87c82374e19d6b44107f213c38ee0bed3521880c65"
 
 }
 
@@ -87,7 +99,8 @@ rule dropbox_phishkit {
         description = "Known DropBox PhishKits"
 
     condition:
-        hash.sha256(0, filesize) == "2573c007b4e2a0e212000aaa890f74ed93131f19bdd6b007d38d5838a3b7213b"
+        hash.sha256(0, filesize) ==
+        "2573c007b4e2a0e212000aaa890f74ed93131f19bdd6b007d38d5838a3b7213b"
 
 }
 
@@ -100,6 +113,23 @@ rule adobe_phishkit {
         description = "Known Adobe PhishKits"
 
     condition:
-        hash.sha256(0, filesize) == "40af3b2320e8b96dade4e833e1bb69dc358e7d3a8d2c7e7f861bd7029b7a37ed"
+        hash.sha256(0, filesize) ==
+        "40af3b2320e8b96dade4e833e1bb69dc358e7d3a8d2c7e7f861bd7029b7a37ed"
+
+}
+
+rule banking_phishkit {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        created_on = "2018-06-13"
+        description = "Known banking PhishKits"
+
+    condition:
+    hash.sha256(0, filesize) ==
+    "362f680698361c71427e2020546a397d08c287530d2c96cf53c6876b0c481ede" or
+    hash.sha256(0, filesize) ==
+    "bf1971f78baef3b06064065b917c8c947846071a20cb50d8ca85ee0c3683a8df"
 
 }
