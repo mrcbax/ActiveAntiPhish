@@ -95,6 +95,15 @@ rule phishkit_uids {
         $41 = "BigNattY"
         $42 = "franksam12340"
         $43 = "jameshang12340"
+        $44 = "bc637518"
+        $45 = "q1y7lddxendi07jbj0mksvf4"
+        $46 = "slimclasss77"
+        $47 = "ericjasonminks150"
+        $48 = "dhotmuller"
+        $49 = "_JeHFUq_VJOXK0QWHtoGYDw1774256418"
+        $50 = "BURHAN FUDPAGE" nocase
+        $51 = "mailworkstrong1"
+
 
     condition:
         any of them
@@ -193,9 +202,9 @@ rule phishkit_banking {
         description = "Known banking PhishKits"
 
     condition:
-    hash.sha256(0, filesize) ==
-    "362f680698361c71427e2020546a397d08c287530d2c96cf53c6876b0c481ede" or
-    hash.sha256(0, filesize) ==
-    "bf1971f78baef3b06064065b917c8c947846071a20cb50d8ca85ee0c3683a8df"
+        hash.sha256(0, filesize) ==
+        "362f680698361c71427e2020546a397d08c287530d2c96cf53c6876b0c481ede" or
+        hash.sha256(0, filesize) ==
+        "bf1971f78baef3b06064065b917c8c947846071a20cb50d8ca85ee0c3683a8df"
 
 }
