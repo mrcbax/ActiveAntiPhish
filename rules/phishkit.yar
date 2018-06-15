@@ -134,11 +134,13 @@ rule phishkit_uids {
         $81 = "banklogs1"
         $82 = "Unknown(doit)com"
         $83 = "baithwire"
-        $84 = "fud.pages" nocase
+        $84 = "fud.page" nocase
         $85 = "fudpage" nocase
         $86 = "igma"
         $87 = "670486322"
         $88 = "LulzSec"
+        $89 = "harolbwalt"
+        $90 = "iLNxAnb"
 
 
     condition:
