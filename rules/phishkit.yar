@@ -12,6 +12,7 @@ rule phishkit_generic {
     strings:
         $geo_detection0 = "geoplugin" nocase
         $geo_detection1 = "geoiptool" nocase
+        $geo_detection2 = "ip-address-lookup-v4"
         $UA_detection = "$_SERVER['HTTP_USER_AGENT']" nocase
         $IP_detection0 = "$_SERVER['HTTP_CLIENT_IP']" nocase
         $IP_detection1 = "$_SERVER['REMOTE_ADDR']" nocase
@@ -40,6 +41,7 @@ rule phishkit_generic {
         $code_comments1 = "---"
         $code_comments2 = "==="
         $code_comments3 = "+++"
+        $code_comments4 = "|||"
         $php_header = "<?php"
         $php_header2 = "<?"
         $php_footer = "?>"
@@ -103,6 +105,8 @@ rule phishkit_uids {
         $49 = "_JeHFUq_VJOXK0QWHtoGYDw1774256418"
         $50 = "BURHAN FUDPAGE" nocase
         $51 = "mailworkstrong1"
+        $52 = "rcazconstructionllc"
+        $53 = "dallasvendorllc"
 
 
     condition:
@@ -161,7 +165,17 @@ rule phishkit_microsoft {
         hash.sha256(0, filesize) ==
         "c107e45c35c979f9347f2c43c616b967fea409dad905c8297e939571d75fc6bc" or
         hash.sha256(0, filesize) ==
-        "f3695975ee6c330514836b87c82374e19d6b44107f213c38ee0bed3521880c65"
+        "f3695975ee6c330514836b87c82374e19d6b44107f213c38ee0bed3521880c65" or
+        hash.sha256(0, filesize) ==
+        "ddf32e74b524b8c70f585d41e9b08137c710d14e1549b100560c4aa30db1414b" or
+        hash.sha256(0, filesize) ==
+        "5f532405e37ec3a399d9d7d43c45ab7d1cf04f916d1b6003c8c508dda549b025" or
+        hash.sha256(0, filesize) ==
+        "e5196ccbf1480d54f9af749d2ad136b0081b499cac71015db9094fcb10cfd91a" or
+        hash.sha256(0, filesize) ==
+        "8aabdbd1f03084548383a36a4ba432f3d661dbf42c6f6202be8157768d5de7d6" or
+        hash.sha256(0, filesize) ==
+        "33a7d6ee2ae2a968bef2482b1f21c1751e37348d0bb577b2be4027f7596d7d73"
 
 }
 
@@ -175,7 +189,11 @@ rule phishkit_dropbox {
 
     condition:
         hash.sha256(0, filesize) ==
-        "2573c007b4e2a0e212000aaa890f74ed93131f19bdd6b007d38d5838a3b7213b"
+        "2573c007b4e2a0e212000aaa890f74ed93131f19bdd6b007d38d5838a3b7213b" or
+        hash.sha256(0, filesize) ==
+        "f142b9d1c062ab03d2ba654a62db59c56e094bbe7cbdb2186cf4720f0bd94c71" or
+        hash.sha256(0, filesize) ==
+        "79cf5811a1978495d2b3889decadb8b804e84a6112b28d5ef09131efb3ea8b0e"
 
 }
 
@@ -205,6 +223,53 @@ rule phishkit_banking {
         hash.sha256(0, filesize) ==
         "362f680698361c71427e2020546a397d08c287530d2c96cf53c6876b0c481ede" or
         hash.sha256(0, filesize) ==
-        "bf1971f78baef3b06064065b917c8c947846071a20cb50d8ca85ee0c3683a8df"
+        "bf1971f78baef3b06064065b917c8c947846071a20cb50d8ca85ee0c3683a8df" or
+        hash.sha256(0, filesize) ==
+        "2cd5d8921cffc85b97ff78404ad6ff40ac7bc792e0490e873a094031e2c96f3c" or
+        hash.sha256(0, filesize) ==
+        "ac7357307f4703e891f5efd2a6af05358e7206a968f07b82edfc1e0ee2988a02"
 
+}
+
+rule phishkit_telecom {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-15"
+        description = "Known telecommunications PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "2df34379555e4ed0bed9cac3ef262fc9b401608f3a54692a1479e18a8e875472" or
+        hash.sha256(0, filesize) ==
+        "cb850a4b1aa17c242f425a0ce15fc93a1b27d732f77b8f08892f745f99f26916"
+
+}
+
+rule phishkit_yahoo {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-15"
+        description = "Known Yahoo PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "81689970d6d2c70ba5168cb43bcbc54603950a2b59fa581d0e415fa5b7cb18a4"
+
+}
+
+rule phishkit_multi {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-15"
+        description = "Known multi-account PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "d3bf33d3fdd2ceddeb2bf66004c0eda34368763caeeb2b75b35e7427e573eb6a"
 }
