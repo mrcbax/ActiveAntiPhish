@@ -27,7 +27,7 @@ rule phishkit_generic {
         $credential_harvest4 = "$_POST['username']" nocase
         $credential_harvest5 = "$_POST['eMailAdd']" nocase
         $credential_harvest6 = "$_POST['recEmail']" nocase
-        $credentail_harvest7 = "$_POST['phoneNumber']" nocase
+        $credential_harvest7 = "$_POST['phoneNumber']" nocase
         $credential_harvest8 = "$_POST['em']" nocase
         $credentail_harvest9 = "$_POST['psw']" nocase
         $credential_harvest10 = "$_POST['id']" nocase
@@ -53,8 +53,7 @@ rule phishkit_generic {
 
 
     condition:
-        any of ($php*) and any of ($credential_harvest*) and any of ($*exfil*)
-        and 4 of them
+        any of ($php*) and any of ($credential_harvest*) and any of ($email*)and 4 of them
 }
 
 rule phishkit_uids {
@@ -73,7 +72,6 @@ rule phishkit_uids {
         $3 = "dddresult"
         $4 = "office465"
         $5 = "office3655"
-        $5 = "phishtank" //used in blocking scripts that block the good guy crawlers.
         $6 = "strictlydomain"
         $7 = "*B0y"
         $8 = "doublerror404"
@@ -109,7 +107,7 @@ rule phishkit_uids {
         $47 = "ericjasonminks150"
         $48 = "dhotmuller"
         $49 = "_JeHFUq_VJOXK0QWHtoGYDw1774256418"
-        $50 = "" nocase
+        $50 = "iLNxAnb"
         $51 = "mailworkstrong1"
         $52 = "rcazconstructionllc"
         $53 = "dallasvendorllc"
@@ -140,12 +138,11 @@ rule phishkit_uids {
         $87 = "670486322"
         $88 = "LulzSec"
         $89 = "harolbwalt"
-        $90 = "iLNxAnb"
+        $90 = "phishtank" //used in blocking scripts that block the good guy crawlers.
 
 
     condition:
         any of them
-
 
 }
 
