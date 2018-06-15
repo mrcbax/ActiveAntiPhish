@@ -129,6 +129,10 @@ rule phishkit_uids {
         $77 = "blessedalilogz"
         $78 = "Jboi" nocase
         $79 = "gloryfirmltd"
+        $80 = "OLUWA"
+        $81 = "banklogs1"
+        $82 = "Unknown(doit)com"
+        $83 = "baithwire"
 
 
     condition:
@@ -202,7 +206,9 @@ rule phishkit_microsoft {
         hash.sha256(0, filesize) ==
         "33a7d6ee2ae2a968bef2482b1f21c1751e37348d0bb577b2be4027f7596d7d73" or
         hash.sha256(0, filesize) ==
-        "44c6f3ee1d2365434f6ad35d8911f49e2d50d900c00baf1352e9279c8ae0c18d"
+        "44c6f3ee1d2365434f6ad35d8911f49e2d50d900c00baf1352e9279c8ae0c18d" or
+        hash.sha256(0, filesize) ==
+        "748536449d6ce08180eb29ff1b7959e13d409c5c915196986791f5f7097acde2"
 
 }
 
