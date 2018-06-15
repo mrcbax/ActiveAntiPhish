@@ -123,6 +123,12 @@ rule phishkit_uids {
         $71 = "kingservar"
         $72 = "K1nG^SeRvAr"
         $73 = "babaservar"
+        $74 = "hackedbykoko"
+        $75 = "jamesalfred2012"
+        $76 = "enricobenettti"
+        $77 = "blessedalilogz"
+        $78 = "Jboi" nocase
+        $79 = "gloryfirmltd"
 
 
     condition:
@@ -194,7 +200,9 @@ rule phishkit_microsoft {
         hash.sha256(0, filesize) ==
         "8aabdbd1f03084548383a36a4ba432f3d661dbf42c6f6202be8157768d5de7d6" or
         hash.sha256(0, filesize) ==
-        "33a7d6ee2ae2a968bef2482b1f21c1751e37348d0bb577b2be4027f7596d7d73"
+        "33a7d6ee2ae2a968bef2482b1f21c1751e37348d0bb577b2be4027f7596d7d73" or
+        hash.sha256(0, filesize) ==
+        "44c6f3ee1d2365434f6ad35d8911f49e2d50d900c00baf1352e9279c8ae0c18d"
 
 }
 
@@ -307,5 +315,7 @@ rule phishkit_unknown {
         hash.sha256(0, filesize) ==
         "d139dae69d056958e8b7cc3deaad5a8509aac27e3f2af44ec0861e519f020a1b" or
         hash.sha256(0, filesize) ==
-        "abff679ee32bc36d009d5fc282d31176ea5c626a24a1bff8446f91a4ed58a5f4"
+        "abff679ee32bc36d009d5fc282d31176ea5c626a24a1bff8446f91a4ed58a5f4" or
+        hash.sha256(0, filesize) ==
+        "323ffa607fd2104b821c6862228be2dc5f28731ddaffc7475b29bc159c039605"
 }
