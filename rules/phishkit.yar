@@ -115,6 +115,7 @@ rule phishkit_uids {
         $57 = "cyveillance"
         $58 = "Hacker Bamo"
         $59 = "joananndradelozano"
+        $60 = "eppinigeria"
 
     condition:
         any of them
@@ -146,7 +147,9 @@ rule phishkit_google {
 
     condition:
         hash.sha256(0, filesize) ==
-        "1cc4118e6e16ce0ea202a0576f616b72f5ef809cef559ca8d57a75ae994f3430"
+        "1cc4118e6e16ce0ea202a0576f616b72f5ef809cef559ca8d57a75ae994f3430" or
+        hash.sha256(0, filesize) ==
+        "894d75e8c73498b5ef2abaa8b7322db6f544ef28120ce62227897c9206b21532"
 
 }
 
