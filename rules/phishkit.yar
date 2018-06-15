@@ -6,13 +6,14 @@ rule phishkit_generic {
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         date = "2018-06-12"
-        updated = "2018-06-13"
+        updated = "2018-06-15"
         description = "Triggers on php files that contain indicators that the file is used for stolen credential exfiltration."
 
     strings:
         $geo_detection0 = "geoplugin" nocase
         $geo_detection1 = "geoiptool" nocase
         $geo_detection2 = "ip-address-lookup-v4"
+        $geo_detection4 = "ipinfodb"
         $UA_detection = "$_SERVER['HTTP_USER_AGENT']" nocase
         $IP_detection0 = "$_SERVER['HTTP_CLIENT_IP']" nocase
         $IP_detection1 = "$_SERVER['REMOTE_ADDR']" nocase
@@ -30,7 +31,8 @@ rule phishkit_generic {
         $credential_harvest8 = "$_POST['em']" nocase
         $credentail_harvest9 = "$_POST['psw']" nocase
         $credential_harvest10 = "$_POST['id']" nocase
-        $email_exfil_headers = "MIME-Version: 1.0" nocase
+        $email_headers0 = "MIME-Version: 1.0" nocase
+        $email_headers1 = "MIME-Version:1.0" nocase
         $email_exfil = "mail(" nocase
         $file_exfil0 = "fopen(" nocase
         $file_exfil1 = "fputs(" nocase
@@ -60,6 +62,7 @@ rule phishkit_uids {
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         date = "2018-06-13"
+        updated = "2018-06-15"
         description = "Unique IDs used in phish kits, often emails, usernames, and numbers. This may trigger many false positives depending on what you are scanning"
 
     strings:
@@ -116,6 +119,11 @@ rule phishkit_uids {
         $58 = "Hacker Bamo"
         $59 = "joananndradelozano"
         $60 = "eppinigeria"
+        $70 = "bdf624a70b290f75ecdf08f61ba30bb97b946fcd08a5dd35eeaabbc7b6b3f354"
+        $71 = "kingservar"
+        $72 = "K1nG^SeRvAr"
+        $73 = "babaservar"
+
 
     condition:
         any of them
@@ -142,7 +150,8 @@ rule phishkit_google {
     meta:
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
-        date = "2018-06-11"
+        date = "2018-06-12"
+        updated = "2018-06-15"
         description = "Known Google PhishKits"
 
     condition:
@@ -158,7 +167,7 @@ rule phishkit_microsoft {
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         date = "2018-06-12"
-        updated = "2018-06-13"
+        updated = "2018-06-15"
         description = "Known Microsoft PhishKits"
 
     condition:
@@ -195,6 +204,7 @@ rule phishkit_dropbox {
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         date = "2018-06-12"
+        updated = "2018-06-15"
         description = "Known DropBox PhishKits"
 
     condition:
@@ -227,6 +237,7 @@ rule phishkit_banking {
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         date = "2018-06-13"
+        updated = "2018-06-15"
         description = "Known banking PhishKits"
 
     condition:
@@ -282,4 +293,19 @@ rule phishkit_multi {
     condition:
         hash.sha256(0, filesize) ==
         "d3bf33d3fdd2ceddeb2bf66004c0eda34368763caeeb2b75b35e7427e573eb6a"
+}
+
+rule phishkit_unknown {
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-15"
+        description = "hashes of unknown PhishKits"
+
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "d139dae69d056958e8b7cc3deaad5a8509aac27e3f2af44ec0861e519f020a1b" or
+        hash.sha256(0, filesize) ==
+        "abff679ee32bc36d009d5fc282d31176ea5c626a24a1bff8446f91a4ed58a5f4"
 }
