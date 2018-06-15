@@ -29,6 +29,7 @@ rule phishkit_generic {
         $credentail_harvest7 = "$_POST['phoneNumber']" nocase
         $credential_harvest8 = "$_POST['em']" nocase
         $credentail_harvest9 = "$_POST['psw']" nocase
+        $credential_harvest10 = "$_POST['id']" nocase
         $email_exfil_headers = "MIME-Version: 1.0" nocase
         $email_exfil = "mail(" nocase
         $file_exfil0 = "fopen(" nocase
@@ -36,6 +37,7 @@ rule phishkit_generic {
         $log_tags0 = "Vict!m" nocase
         $log_tags1 = "Created BY" nocase
         $log_tags2 = "You have a new drop" nocase
+        $log_tags3 = "Rezultz" nocase
         $redirect = "header(" nocase
         $code_comments0 = "//change ur email here"
         $code_comments1 = "---"
@@ -49,7 +51,7 @@ rule phishkit_generic {
 
     condition:
         any of ($php*) and any of ($credential_harvest*) and any of ($*exfil*)
-        and 3 of them
+        and 4 of them
 }
 
 rule phishkit_uids {
@@ -107,7 +109,12 @@ rule phishkit_uids {
         $51 = "mailworkstrong1"
         $52 = "rcazconstructionllc"
         $53 = "dallasvendorllc"
-
+        $54 = "junkycrazy"
+        $55 = "dbenito202"
+        $56 = "blessed.muno1"
+        $57 = "cyveillance"
+        $58 = "Hacker Bamo"
+        $59 = "joananndradelozano"
 
     condition:
         any of them
