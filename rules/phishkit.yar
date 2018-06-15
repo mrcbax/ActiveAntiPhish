@@ -40,6 +40,7 @@ rule phishkit_generic {
         $log_tags1 = "Created BY" nocase
         $log_tags2 = "You have a new drop" nocase
         $log_tags3 = "Rezultz" nocase
+        $log_tags4 = "Spam ReZulT" nocase
         $redirect = "header(" nocase
         $code_comments0 = "//change ur email here"
         $code_comments1 = "---"
@@ -108,7 +109,7 @@ rule phishkit_uids {
         $47 = "ericjasonminks150"
         $48 = "dhotmuller"
         $49 = "_JeHFUq_VJOXK0QWHtoGYDw1774256418"
-        $50 = "BURHAN FUDPAGE" nocase
+        $50 = "" nocase
         $51 = "mailworkstrong1"
         $52 = "rcazconstructionllc"
         $53 = "dallasvendorllc"
@@ -133,6 +134,11 @@ rule phishkit_uids {
         $81 = "banklogs1"
         $82 = "Unknown(doit)com"
         $83 = "baithwire"
+        $84 = "fud.pages" nocase
+        $85 = "fudpage" nocase
+        $86 = "igma"
+        $87 = "670486322"
+        $88 = "LulzSec"
 
 
     condition:
@@ -200,15 +206,15 @@ rule phishkit_microsoft {
         hash.sha256(0, filesize) ==
         "5f532405e37ec3a399d9d7d43c45ab7d1cf04f916d1b6003c8c508dda549b025" or
         hash.sha256(0, filesize) ==
-        "e5196ccbf1480d54f9af749d2ad136b0081b499cac71015db9094fcb10cfd91a" or
-        hash.sha256(0, filesize) ==
         "8aabdbd1f03084548383a36a4ba432f3d661dbf42c6f6202be8157768d5de7d6" or
         hash.sha256(0, filesize) ==
         "33a7d6ee2ae2a968bef2482b1f21c1751e37348d0bb577b2be4027f7596d7d73" or
         hash.sha256(0, filesize) ==
         "44c6f3ee1d2365434f6ad35d8911f49e2d50d900c00baf1352e9279c8ae0c18d" or
         hash.sha256(0, filesize) ==
-        "748536449d6ce08180eb29ff1b7959e13d409c5c915196986791f5f7097acde2"
+        "748536449d6ce08180eb29ff1b7959e13d409c5c915196986791f5f7097acde2" or
+        hash.sha256(0, filesize) ==
+        "3fce7f5cdb17832e9a8e3b75a4654741cb1febb77df3ad9f0dcdd228286ec21f"
 
 }
 
@@ -305,6 +311,8 @@ rule phishkit_multi {
         description = "Known multi-account PhishKits"
 
     condition:
+        hash.sha256(0, filesize) ==
+        "e5196ccbf1480d54f9af749d2ad136b0081b499cac71015db9094fcb10cfd91a" or
         hash.sha256(0, filesize) ==
         "d3bf33d3fdd2ceddeb2bf66004c0eda34368763caeeb2b75b35e7427e573eb6a"
 }
