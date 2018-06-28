@@ -88,7 +88,7 @@ rule phishkit_uids {
         $19 = "valinc0147"
         $20 = "NC3778N12E999MDM3429" nocase
         $21 = "MR.Int.Tunisien"
-        $22 = "ABCDEMN0123456789" //create regex for filenames created with the function that uses these characters for random filenames. Filenames are 20 chars long.
+        $22 = /((?:[a-zA-Z0-9]{20}))/
         $23 = "JOkEr7"
         $24 = "dropyefe"
         $25 = "LvRxDnOnA" nocase
