@@ -139,6 +139,8 @@ rule phishkit_uids {
         $88 = "LulzSec"
         $89 = "harolbwalt"
         $90 = "phishtank" //used in blocking scripts that block the good guy crawlers.
+        $91 = "mb4504319"
+        $92 = "david_1sc"
 
 
     condition:
