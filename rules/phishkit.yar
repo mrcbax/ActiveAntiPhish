@@ -14,6 +14,7 @@ rule phishkit_generic {
         $geo_detection1 = "geoiptool" nocase
         $geo_detection2 = "ip-address-lookup-v4"
         $geo_detection4 = "ipinfodb"
+        $card_verification0 = "lookup.binlist"
         $UA_detection = "$_SERVER['HTTP_USER_AGENT']" nocase
         $IP_detection0 = "$_SERVER['HTTP_CLIENT_IP']" nocase
         $IP_detection1 = "$_SERVER['REMOTE_ADDR']" nocase
@@ -141,7 +142,13 @@ rule phishkit_uids {
         $90 = "phishtank" //used in blocking scripts that block the good guy crawlers.
         $91 = "mb4504319"
         $92 = "david_1sc"
-
+        $93 = "scama-yahya-xhack"
+        $94 = "sand_email"
+        $95 = "❤ ●•۰۰۰۰•● ❤ ●•۰۰۰•●••●●••"
+        $96 = "yahya_email"
+        $97 = "samehman575"
+        $98 = "Bassem_Almasry"
+        $99 = "Scam Page V1"
 
     condition:
         any of them
@@ -269,7 +276,9 @@ rule phishkit_banking {
         hash.sha256(0, filesize) ==
         "2cd5d8921cffc85b97ff78404ad6ff40ac7bc792e0490e873a094031e2c96f3c" or
         hash.sha256(0, filesize) ==
-        "ac7357307f4703e891f5efd2a6af05358e7206a968f07b82edfc1e0ee2988a02"
+        "ac7357307f4703e891f5efd2a6af05358e7206a968f07b82edfc1e0ee2988a02" or
+        hash.sha256(0, filesize) ==
+        "c77d594904e754d099b64c2ce48c52e225f2b90d1f0a7f2e72b42404c29332a8"
 
 }
 
