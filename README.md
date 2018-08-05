@@ -15,3 +15,7 @@ This project maintains a collection of active and inactive phish kits that are u
 YARA Rules
 ---
 In the `rules` directory you can find a yara ruleset for the phishkits in this repo as well as a generic rule for detecting phishing page source code (phish kits all use a similar design/coding style).
+
+Advisories
+---
+You can find current phishing advisories in `ADVISORIES.md`.
