@@ -89,7 +89,7 @@ rule phishkit_uids {
         $19 = "valinc0147"
         $20 = "NC3778N12E999MDM3429" nocase
         $21 = "MR.Int.Tunisien"
-        $22 = /((?:[a-zA-Z0-9]{20}))/
+        $22 = /[a-zA-Z0-9]{20}/
         $23 = "JOkEr7"
         $24 = "dropyefe"
         $25 = "LvRxDnOnA" nocase
