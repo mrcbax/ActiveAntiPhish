@@ -17,7 +17,7 @@ for f in files:
 	#make the folder
 	call(["mkdir", tmp])
 	#encrypt the original	
-	call(["gpg", "--batch", "--passphrase", sys.argv[1], "-c", f])
+	call(["gpg", "--batch", "--passphrase", sys.argv[1], "--cipher-algo", "AES256", "-c", f])
 	#move original
 	call(["mv", f, "./" + tmp + "/"])
 	#move encrypted
