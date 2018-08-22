@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Requires the following system packages: sha256sum gnupg
+
 import subprocess
 from subprocess import call
 import os
