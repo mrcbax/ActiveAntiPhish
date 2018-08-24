@@ -416,7 +416,7 @@ rule phishkit_cryptotrading {
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         date = "2018-06-15"
-        description = "hashes of unknown PhishKits"
+        description = "hashes of CryptoCurrency trading platform PhishKits"
 
 
     condition:
