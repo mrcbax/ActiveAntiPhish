@@ -1,5 +1,9 @@
 # ActiveAntiPhish
 
+# THERE IS A BIG BATCH OF 50 KITS COMING
+Currently on upload round 1/5
+---
+
 Theory
 ---
 This repo takes advantage of a technique called database saturation. If your organization is successfully phished this tool allows the organization to increase the noise in the signal to noise ratio of the hacker's stolen credentials. This is done by providing the tool with a fake password list, fake username list, proxy list, the phishing page's callback url, and your organizations email domain extension.
