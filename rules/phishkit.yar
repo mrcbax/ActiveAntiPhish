@@ -161,6 +161,36 @@ rule phishkit_uids {
 
 }
 
+rule phishkit_amazon {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-12"
+        updated = "2018-06-15"
+        description = "Known Amazon PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "3d840b104aea1f863ce456c202d7a92274050812343fc691c4e323ea6f99e21d" or
+        hash.sha256(0, filesize) ==
+        "8ad782b520ac0b38ff32167e1785ab74ac6f775df0aee9822d86f051499725b2"
+}
+
+rule phishkit_apple {
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-12"
+        updated = "2018-06-15"
+        description = "Known Apple PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "0c260bb6109a24bd10d93b8cdf89fb025747cd7cc9bf12f99a3daf7de1250cdc"
+
+}
+
 rule phishkit_docusign {
 
     meta:
@@ -173,6 +203,20 @@ rule phishkit_docusign {
         hash.sha256(0, filesize) ==
         "9136e3ca8d6425e9ccc529accfb6e321e3048b7e84c87940b9f40297bc704120"
 
+}
+
+rule phishkit_ebay {
+
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-12"
+        updated = "2018-06-15"
+        description = "Known EBay PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "1f2877f7d321db68f846ef31da699de369ce4e2f3ea7b2ddfe380a8a112504f8"
 }
 
 rule phishkit_google {
@@ -232,6 +276,36 @@ rule phishkit_microsoft {
         hash.sha256(0, filesize) ==
         "52eab3f8787dcd6a5e23b500338c155a02c31d39c6b52e29fc990ead2833aba4"
 
+}
+
+rule phishkit_netflix {
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-12"
+        updated = "2018-06-15"
+        description = "Known Netflix PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "38bb956cf6c355a64121e52b7888923c2b673a9469c1d0e3e5f197667763d1b3"
+}
+
+rule phishkit_paypal {
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-12"
+        updated = "2018-06-15"
+        description = "Known PayPal PhishKits"
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "2af1d0c69e9507fe7b28c68aaee1969c75d5b9992fd8602c0ceefc79330f24ab" or
+        hash.sha256(0, filesize) ==
+        "5e7c567e561a59f93db854ac91cd7f933fa1dac2622e9a05906964c9e03935fb" or
+        hash.sha256(0, filesize) ==
+        "08d12a7b8c920bddd5cf5e8911856e4e93d6fe744b2ca6b32bba2849b520f207"
 }
 
 rule phishkit_dropbox {
@@ -335,6 +409,19 @@ rule phishkit_multi {
         "e5196ccbf1480d54f9af749d2ad136b0081b499cac71015db9094fcb10cfd91a" or
         hash.sha256(0, filesize) ==
         "d3bf33d3fdd2ceddeb2bf66004c0eda34368763caeeb2b75b35e7427e573eb6a"
+}
+
+rule phishkit_cryptotrading {
+    meta:
+        author = "Chad Baxter"
+        author_email = "cbaxter@mail.umw.edu"
+        date = "2018-06-15"
+        description = "hashes of unknown PhishKits"
+
+
+    condition:
+        hash.sha256(0, filesize) ==
+        "14ffe686bc6afba5efa577063fedd89b66977ac939fae03504a39b8b85d86569"
 }
 
 rule phishkit_unknown {
