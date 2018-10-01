@@ -3,7 +3,7 @@
 # THERE IS A BIG BATCH OF 50 KITS COMING
 Currently on upload round 3/5
 ---
-
+This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/2018-06-16_1.html](https://computeco.de/2018-06-16_1.html?utm_source=GitHub&utm_medium=readme&utm_campaign=ActiveAntiPhish)
 Theory
 ---
 This repo takes advantage of a technique called database saturation. If your organization is successfully phished this tool allows the organization to increase the noise in the signal to noise ratio of the hacker's stolen credentials. This is done by providing the tool with a fake password list, fake username list, proxy list, the phishing page's callback url, and your organizations email domain extension.
