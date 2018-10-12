@@ -156,6 +156,9 @@ rule phishkit_uids {
         $104 = "WeStGiRl"
         $105 = "attahvictorcity"
         $106 = "oussamadwissel"
+        $107 = "radwanadra12"
+        $108 = "Pro.Spaming"
+        $109 = "spamtools.pro"
 
     condition:
         any of them
@@ -194,7 +197,9 @@ rule phishkit_apple {
         hash.sha256(0, filesize) ==
         "81ff4fe2dca587bb5edd8c41b9fe2822f4d602b6364acaead67730940aab99ca" or
         hash.sha256(0, filesize) ==
-        "4792e12148e632272c953ebfdcc36313ff8386168b3391fd29c27a40a21192d1"
+        "4792e12148e632272c953ebfdcc36313ff8386168b3391fd29c27a40a21192d1" or
+        hash.sha256(0, filesize) ==
+        "793796df99f2dd0266e14c19279d8f0b305de463f79d73c7495bdd1b9827d547"
 
 }
 
@@ -305,7 +310,9 @@ rule phishkit_netflix {
         hash.sha256(0, filesize) ==
         "73fafa2d39d978b1225da2517743dd57ffd9074d6f03d0f56a75b8bd3c794a34" or
         hash.sha256(0, filesize) ==
-        "2776cca9605b87533b11e4fcfc26f8727511a105d9a209c44bbe4f60f46a0ae8"
+        "2776cca9605b87533b11e4fcfc26f8727511a105d9a209c44bbe4f60f46a0ae8" or
+        hash.sha256(0, filesize) ==
+        "98865e0b1df4557a0563ff7121572b9792a10be082dc265d485decfaa6f92dca"
 }
 
 rule phishkit_paypal {
@@ -338,7 +345,15 @@ rule phishkit_paypal {
         hash.sha256(0, filesize) ==
         "334d0495d419fbc96fd27817b42bc4cefceeb3fc859e40dec8fb38ce33423336" or
         hash.sha256(0, filesize) ==
-        "52411f46f3436e4db49d20fed586f839a9b0ed5c7497a8ea694847560fc3a396"
+        "52411f46f3436e4db49d20fed586f839a9b0ed5c7497a8ea694847560fc3a396" or
+        hash.sha256(0, filesize) ==
+        "70328f271f9658f7c36844477f83eca3f87400f2fcc2957f14bf0d37c5a743f8" or
+        hash.sha256(0, filesize) ==
+        "009448403a4959b2db39f6c44216de6a277c80900ce557ff7e513d58c9085697" or
+        hash.sha256(0, filesize) ==
+        "11629446fa8a80173ecc60bbb67ddf3b1895e3f676bd83b19deba3279004331e" or
+        hash.sha256(0, filesize) ==
+        "81485290f3cc8d6d69c14ea4afaea67c87c462224c8a37c9b43411edeee75d83"
 }
 
 rule phishkit_dropbox {
@@ -415,7 +430,9 @@ rule phishkit_telecom {
         hash.sha256(0, filesize) ==
         "2df34379555e4ed0bed9cac3ef262fc9b401608f3a54692a1479e18a8e875472" or
         hash.sha256(0, filesize) ==
-        "cb850a4b1aa17c242f425a0ce15fc93a1b27d732f77b8f08892f745f99f26916"
+        "cb850a4b1aa17c242f425a0ce15fc93a1b27d732f77b8f08892f745f99f26916" or
+        hash.sha256(0, filesize) ==
+        "c8b3f703b1539d0882ca6941320625d62867d09552f68db5faf8faacb3d9a6b3"
 
 }
 
@@ -462,7 +479,9 @@ rule phishkit_cryptotrading {
         hash.sha256(0, filesize) ==
         "35b36d56c5e753cf08a5af0c020fdc351e165509b0bd12f96845bd6ce314eb14" or
         hash.sha256(0, filesize) ==
-        "82a7f11e2dd14c8ccf0b4904b29bc9f3a1d649e69416fd3e697c2ac57b0aefc4"
+        "82a7f11e2dd14c8ccf0b4904b29bc9f3a1d649e69416fd3e697c2ac57b0aefc4" or
+        hash.sha256(0, filesize) ==
+        "619275b9a9a26e0093b4d15696a1c33565d24710c9825536444dbd4bde7d2085"
 }
 
 rule phishkit_unknown {
