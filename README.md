@@ -1,7 +1,6 @@
 # ActiveAntiPhish
 
-# THERE IS A BIG BATCH OF 50 KITS COMING
-Currently on upload round 3/5
+
 ---
 This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/2018-06-16_1.html](https://computeco.de/2018-06-16_1.html?utm_source=GitHub&utm_medium=readme&utm_campaign=ActiveAntiPhish)
 
