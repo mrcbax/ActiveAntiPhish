@@ -199,6 +199,10 @@ rule phishkit_uids {
         $139 = "aimenboussadia"
         $140 = "Anonisma"
         $141 = "moghul.haroon"
+        $142 = "LYEX8EmkYEoO9wuWuMRtREVaFcD1hlpH"
+        $143 = "trey3way"
+        $144 = "acsh33nz0key"
+        $145 = "2bbdc9f3fb30118c4a380db585adda76"
 
     condition:
         any of them
@@ -443,7 +447,9 @@ rule phishkit_paypal {
         hash.sha256(0, filesize) ==
         "76755776dd5d1168cd307c4789d6190145f6a0250ab06679c434b7d1b4f00a4e" or
         hash.sha256(0, filesize) ==
-        "b57858e1ea7a2c32dedf68703afab680b8718df6f82f6d2db2ce860b7c5e853c"
+        "b57858e1ea7a2c32dedf68703afab680b8718df6f82f6d2db2ce860b7c5e853c" or
+        hash.sha256(0, filesize) ==
+        "d544671cbcdf6931d2fe610f3dad923debf7029f4e8965254a4d828643f90fb8"
 }
 
 rule phishkit_dropbox {
