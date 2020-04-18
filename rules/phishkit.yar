@@ -218,6 +218,17 @@ rule phishkit_uids {
         $158 = "SweezThaCreator"
         $159 = "likejempol354"
         $160 = "PulberAja"
+        $161 = "2f5358752626e2d79a336c455c78090420170804005825"
+        $162 = "sales.departmental45"
+        $163 = "agusta19686"
+        $164 = "C6SORSHOOV9m9D6XG7Qbf777AD_bd9aoHhruf0rYCyuKNkG"
+        $165 = "Sab3on"
+        $166 = "registademnow"
+        $167 = "s4adow.mr"
+        $168 = "L3A9A9"
+        $169 = "yes734"
+        $170 = "KeNiHaCk"
+        $171 = "gmcdonald121"
 
     condition:
         any of them
@@ -337,7 +348,9 @@ rule phishkit_google {
         hash.sha256(0, filesize) ==
         "f3413e26426829ba37e57bcbf90bafed995678a848cec796cb2d25a688abf4bb" or
         hash.sha256(0, filesize) ==
-        "e64f325fe9dcb3a2ed115a746af95a805eafa801805308846c75443b22724461"
+        "e64f325fe9dcb3a2ed115a746af95a805eafa801805308846c75443b22724461" or
+        hash.sha256(0, filesize) ==
+        "23f4b930fc7e9d00e364c821db657cd55523355c1a1c41cd1e7880ac6658865c"
 
 }
 
@@ -405,7 +418,9 @@ rule phishkit_netflix {
         hash.sha256(0, filesize) ==
         "2776cca9605b87533b11e4fcfc26f8727511a105d9a209c44bbe4f60f46a0ae8" or
         hash.sha256(0, filesize) ==
-        "98865e0b1df4557a0563ff7121572b9792a10be082dc265d485decfaa6f92dca"
+        "98865e0b1df4557a0563ff7121572b9792a10be082dc265d485decfaa6f92dca" or
+        hash.sha256(0, filesize) ==
+        "b146ad200fe98d775705b30f1032ac4607f8b225a9497e93bd7488be0b650485"
 }
 
 rule phishkit_paypal {
@@ -537,7 +552,9 @@ rule phishkit_banking {
         hash.sha256(0, filesize) ==
         "a1dd2feb403bce675c1a363f70b130cb859b2d81e3b26087c998f563ef9d5774" or
         hash.sha256(0, filesize) ==
-        "81773583cfacd55287833896048da4ca1aa3bfff5be10080d11efc3419a53428"
+        "81773583cfacd55287833896048da4ca1aa3bfff5be10080d11efc3419a53428" or
+        hash.sha256(0, filesize) ==
+        "5cc3fdc73b1d559832fede5f1af789fb65ce8f2f1f7f1e9109bbf5a7b355fa4f"
 
 }
 
@@ -617,7 +634,9 @@ rule phishkit_multi {
         hash.sha256(0, filesize) ==
         "be038fad040beecb2dbe9f348819e2d4273ecb1e21a6d3ac45a8419ba476a607" or
         hash.sha256(0, filesize) ==
-        "d4faad42d3b3d1048d95ee907d617f980f1c5b60a337ec0f466fb292cf91a172"
+        "d4faad42d3b3d1048d95ee907d617f980f1c5b60a337ec0f466fb292cf91a172" or
+        hash.sha256(0, filesize) ==
+        "410b2e33227c6f9d3d0016a2f033b3d8b4880161e74db96a983369e583ff3d98"
 }
 
 rule phishkit_cryptotrading {
@@ -662,4 +681,32 @@ rule phishkit_unknown {
         "c0ddb7ae4e3f543ef80c12dcc3a02541b824fc901bc64b4b1063be8cfac93dd4" or
         hash.sha256(0, filesize) ==
         "b660bf63ee9968145578b3dd61490f499ac2a885b026423a0adbe8f849b19f32"
+}
+
+rule phishkit_wetransfer {
+     meta:
+         author = "Chad Baxter"
+         author_email = "cbaxter@mail.umw.edu"
+         date = "2020-04-17"
+         description = "known WeTransfer PhishKits
+
+     condition:
+         hash.sha256(0, filesize) ==
+         "d4699b646e6dc170d5b3e5357005f7b14f3e560df36b51c0b49dd67dd8fdf55b" or
+         hash.sha256(0, filesize) ==
+         "977824855e556c74cda74182b84ef7c32adc5a8ec7c33d4b2b3049e4fe0ff07c" or
+         hash.sha256(0, filesize) ==
+         "2dedbe18cbdf139591b978e385252ce4c421a50c6377e95d55fbfe5906492eb3"
+}
+
+rule phishkit_alibaba {
+     meta:
+         author = "Chad Baxter"
+         author_email = "cbaxter@mail.umw.edu"
+         date = "2020-04-17"
+         description = "known Alibaba PhishKits"
+
+     condition:
+         hash.sha256(0, filesize) ==
+         "dd3351a124da3f65674d9460c2dcdbe6c657a532b5533feeb4c37ab48ef064f4"
 }
