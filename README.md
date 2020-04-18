@@ -1,9 +1,9 @@
 # ActiveAntiPhish
 
 ---
-This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/2018-06-16_1.html](https://computeco.de/2018-06-16_1.html?utm_source=GitHub&utm_medium=readme&utm_campaign=ActiveAntiPhish)
+This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/posts/2018-06-16_1.html](https://computeco.de/posts/2018-06-16_1.html)
 
-## Latest Update 2019-10-22_02:35:36
+## Latest Update 2020-04-17_14:06:00
 
 Theory
 ---
