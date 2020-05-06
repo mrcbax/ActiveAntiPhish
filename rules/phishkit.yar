@@ -688,7 +688,7 @@ rule phishkit_wetransfer {
          author = "Chad Baxter"
          author_email = "cbaxter@mail.umw.edu"
          date = "2020-04-17"
-         description = "known WeTransfer PhishKits
+         description = "known WeTransfer PhishKits"
 
      condition:
          hash.sha256(0, filesize) ==
