@@ -6,7 +6,7 @@ rule phishkit_generic {
         author = "Chad Baxter"
         author_email = "cbaxter@mail.umw.edu"
         date = "2018-06-12"
-        updated = "2018-06-15"
+        updated = "2020-04-29"
         description = "Triggers on php files that contain indicators that the file is used for stolen credential exfiltration."
 
     strings:

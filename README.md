@@ -1,7 +1,7 @@
 # ActiveAntiPhish
 
 ---
-This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/posts/2018-06-16_1.html](https://computeco.de/posts/2018-06-16_1.html)
+This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/posts/2019-06-16_1.html](https://computeco.de/posts/2019-06-16_1.html)
 
 ## Latest Update 2020-04-17_14:06:00
 
