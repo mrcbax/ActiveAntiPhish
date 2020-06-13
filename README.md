@@ -3,7 +3,7 @@
 ---
 This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/posts/2019-06-16_1.html](https://computeco.de/posts/2019-06-16_1.html)
 
-## Latest Update 2020-04-17_14:06:00
+## Latest Update 2020-06-13_17:00:00
 
 Theory
 ---
