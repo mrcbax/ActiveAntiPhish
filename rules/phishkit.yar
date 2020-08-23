@@ -231,6 +231,7 @@ rule phishkit_uids {
         $171 = "gmcdonald121"
         $172 = "sameuletijoro"
         $173 = "izzyeemoney"
+        $174 = "Settingan From Name/Email"
 
     condition:
         any of them
@@ -541,7 +542,9 @@ rule phishkit_paypal {
         hash.sha256(0, filesize) ==
         "523c53097a4831ede580060765a3fa595d9b013899f047861684079ccf9ded98" or
         hash.sha256(0, filesize) ==
-        "1aa6ca5d2cda259317e231e7dd518f6b0bb68b1ed50c0773b6d6fc47819e6673"
+        "1aa6ca5d2cda259317e231e7dd518f6b0bb68b1ed50c0773b6d6fc47819e6673" or
+        hash.sha256(0, filesize) ==
+        "e19353fc5815fc6fec72e0db66dca7c2efbee9d58fe4e471942c07a764dc1ce0"
 }
 
 rule phishkit_adobe {
