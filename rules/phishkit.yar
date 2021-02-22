@@ -4,7 +4,7 @@ rule phishkit_generic {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2020-04-29"
         description = "Triggers on php files that contain indicators that the file is used for stolen credential exfiltration."
@@ -69,7 +69,7 @@ rule phishkit_uids {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-13"
         updated = "2018-06-15"
         description = "Unique IDs used in phish kits, often emails, usernames, and numbers. This may trigger many false positives depending on what you are scanning"
@@ -241,7 +241,7 @@ rule phishkit_uids {
 rule phishkit_alibaba {
      meta:
          author = "Chad Baxter"
-         author_email = "cbaxter@mail.umw.edu"
+         author_email = "cbax@doslabelectronics.com"
          date = "2020-04-17"
          description = "known Alibaba PhishKits"
 
@@ -254,7 +254,7 @@ rule phishkit_amazon {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known Amazon PhishKits"
@@ -273,7 +273,7 @@ rule phishkit_amazon {
 rule phishkit_apple {
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known Apple PhishKits"
@@ -301,7 +301,7 @@ rule phishkit_apple {
 rule phishkit_cryptotrading {
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-15"
         description = "hashes of CryptoCurrency trading platform PhishKits"
 
@@ -321,7 +321,7 @@ rule phishkit_docusign {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         description = "Known Docusign PhishKits"
 
@@ -335,7 +335,7 @@ rule phishkit_dropbox {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known DropBox PhishKits"
@@ -356,7 +356,7 @@ rule phishkit_ebay {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known EBay PhishKits"
@@ -376,7 +376,7 @@ rule phishkit_facebook {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known Facebook PhishKits"
@@ -390,7 +390,7 @@ rule phishkit_google {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known Google PhishKits"
@@ -412,7 +412,7 @@ rule phishkit_google {
 rule phishkit_microsoft {
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known Microsoft PhishKits"
@@ -481,7 +481,7 @@ rule phishkit_netflix {
 rule phishkit_paypal {
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         updated = "2018-06-15"
         description = "Known PayPal PhishKits"
@@ -551,7 +551,7 @@ rule phishkit_adobe {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-12"
         description = "Known Adobe PhishKits"
 
@@ -567,7 +567,7 @@ rule phishkit_banking {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-13"
         updated = "2018-06-15"
         description = "Known banking PhishKits"
@@ -602,7 +602,7 @@ rule phishkit_telecom {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-15"
         description = "Known telecommunications PhishKits"
 
@@ -620,7 +620,7 @@ rule phishkit_logistics {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-15"
         description = "Known Logistics PhishKits (USPS, DHL, China EMS, etc.)"
 
@@ -636,7 +636,7 @@ rule phishkit_multi {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-15"
         description = "Known multi-account PhishKits"
 
@@ -660,7 +660,7 @@ rule phishkit_multi {
 rule phishkit_unknown {
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-15"
         description = "hashes of unknown PhishKits"
 
@@ -685,7 +685,7 @@ rule phishkit_unknown {
 rule phishkit_wetransfer {
      meta:
          author = "Chad Baxter"
-         author_email = "cbaxter@mail.umw.edu"
+         author_email = "cbax@doslabelectronics.com"
          date = "2020-04-17"
          description = "known WeTransfer PhishKits"
 
@@ -702,7 +702,7 @@ rule phishkit_yahoo {
 
     meta:
         author = "Chad Baxter"
-        author_email = "cbaxter@mail.umw.edu"
+        author_email = "cbax@doslabelectronics.com"
         date = "2018-06-15"
         description = "Known Yahoo PhishKits"
 
