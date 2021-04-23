@@ -15,7 +15,7 @@ fn main() {
         .version(format!("{}\t{}", crate_version!(), "GNU-GPL-3.0").as_str())
         .arg(
             Arg::with_name("url")
-                .help("The path to the endpoint to POST fake data to")
+                .help("The path to the endpoint to POST fake data to.")
                 .short("-u")
                 .long("--url")
                 .takes_value(true)
