@@ -2,8 +2,11 @@ use clap::{App, Arg, crate_authors, crate_description, crate_version};
 
 pub mod types;
 pub mod thread_manager;
+pub mod request_builder;
+pub mod generator;
 
 use types::PostFields;
+use thread_manager::*;
 
 fn main() {
     let matches = App::new("ActiveAntiPhish")
@@ -38,6 +41,15 @@ fn main() {
                 .required(true)
         )
         .arg(
+            Arg::with_name("threads")
+                .help("Number of threads to use. Default: 20")
+                .short("-n")
+                .long("--threads")
+                .takes_value(true)
+                .multiple(false)
+                .required(true)
+        )
+        .arg(
             Arg::with_name("email_field")
                 .help("The form field where an email should be populated.")
                 .short("-e")
@@ -58,7 +70,7 @@ fn main() {
         .arg(
             Arg::with_name("phone_field")
                 .help("The form field where an phone number should be populated.")
-                .short("-h")
+                .short("-o")
                 .long("--phone")
                 .takes_value(true)
                 .multiple(false)
@@ -116,18 +128,91 @@ fn main() {
                 .help("Locks application to one thread and displays HTTP response data.")
                 .short("-g")
                 .long("--debug")
-                .takes_value(true)
+                .takes_value(false)
                 .multiple(false)
                 .required(false)
         )
         .get_matches();
     let mut fields: PostFields = PostFields::default();
-    fields.email = matches.value_of("email_field");
-    fields.password = matches.value_of("password_field");
-    fields.phone = matches.value_of("phone_field");
-    fields.fname = matches.value_of("fname_field");
-    fields.lname = matches.value_of("lname_field");
-    fields.ccn = matches.value_of("ccn_field");
-    fields.exp = matches.value_of("exp_field");
-    fields.cvv = matches.value_of("cvv_field");
+    fields.email = match matches.value_of("email_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+    fields.password = match matches.value_of("password_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+    fields.phone = match matches.value_of("phone_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+    fields.fname = match matches.value_of("fname_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+    fields.lname = match matches.value_of("lname_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+    fields.ccn = match matches.value_of("ccn_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+    fields.exp = match matches.value_of("exp_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+    fields.cvv = match matches.value_of("cvv_field") {
+        Some(s) => Some(s.to_string()),
+        None => None
+    };
+
+    let url = match matches.value_of("url") {
+        Some(s) => s.to_string(),
+        None => {
+            eprintln!("A URL was not provided.");
+            std::process::exit(1);
+        }
+    };
+
+    let domain = match matches.value_of("domain") {
+        Some(s) => s.to_string(),
+        None => String::new()
+    };
+
+    let threads: u64 = match matches.value_of("threads") {
+        Some(s) => {
+            match s.parse::<u64>() {
+                Ok(o) => o,
+                Err(_) => {
+                    eprintln!("Number of threads is not a number!");
+                    std::process::exit(1);
+                }
+            }
+        },
+        None => 20
+    };
+
+    let sleep: u64 = match matches.value_of("run_time") {
+        Some(s) => {
+            match s.parse::<u64>() {
+                Ok(o) => o,
+                Err(_) => {
+                    eprintln!("Run time is not a number!");
+                    std::process::exit(1);
+                }
+            }
+        },
+        None => {
+            eprintln!("Run time not specified, is required.");
+            std::process::exit(1);
+        }
+    };
+
+    if matches.is_present("debug") {
+        execute(fields, url, domain, 1, false);
+    } else {
+        execute(fields, url, domain, threads, true);
+    }
+    std::thread::sleep(std::time::Duration::from_secs(sleep));
 }
