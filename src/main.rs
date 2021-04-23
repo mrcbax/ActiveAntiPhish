@@ -209,7 +209,7 @@ fn main() {
         }
     };
 
-    if !matches.is_present("debug") {
+    if matches.is_present("debug") {
         execute(fields, url, domain, 1, true);
     } else {
         execute(fields, url, domain, threads, false);
