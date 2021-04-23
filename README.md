@@ -17,7 +17,7 @@ The theory is that the phisher will abandon their database as validating thousan
 Practice
 ---
 
-You can use the ActiveAntiPhish command line application by compiling it with the [rust toolchain](https://rustup.rs). Simply clone the repo, change directory into the repo and run `cargo install --path .`. You will then be able to run the `aap` program from the command line.
+You can use the ActiveAntiPhish command line application by compiling it with the [rust toolchain](https://rustup.rs). Then, run `cargo install aap`. You will then be able to run the `aap` program from the command line.
 
 ## `aap` Help
 

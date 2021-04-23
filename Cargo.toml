@@ -6,6 +6,9 @@ edition = "2018"
 description = "Saturate the bad guys' databases."
 repository = "https://github.com/LogoiLab/ActiveAntiPhish"
 license = "GPL-3.0"
+readme = "README.md"
+keywords = ["security", "cli", "defensive", "utility"]
+categories = ["command-line-utilities", "network-programming"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]

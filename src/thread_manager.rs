@@ -57,7 +57,7 @@ pub fn execute(form_type: u8, fields: PostFields, url: String, domain: String, t
                             println!("{:?}", e);
                             std::io::stdout().flush().ok().expect("Could not flush stdout");
                         } else {
-                            eprint!("x");
+                            print!("!");
                             std::io::stderr().flush().ok().expect("Could not flush stdout");
                         }
                         None
