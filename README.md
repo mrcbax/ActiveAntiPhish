@@ -3,7 +3,7 @@
 ---
 This readme is a bit outdated. You can read the blog post about ActiveAntiPhish for more info [https://computeco.de/posts/2019-06-16_1.html](https://computeco.de/posts/2019-06-16_1.html)
 
-## Latest Update 2020-08-23_14:23:00_EST
+## Latest Update 2021-03-22_20:21:00_EST
 
 Theory
 ---
@@ -13,6 +13,40 @@ This repo takes advantage of a technique called database saturation. If your org
 It generates hundreds of fake username/password pairs that are injected into the phishing page.
 
 The theory is that the phisher will abandon their database as validating thousands of fake accounts just to find the small amount of valid accounts is very annoying.
+
+Practice
+---
+
+You can use the ActiveAntiPhish command line application by compiling it with the [rust toolchain](https://rustup.rs). Simply clone the repo, change directory into the repo and run `cargo install --path .`. You will then be able to run the `aap` program from the command line.
+
+## `aap` Help
+```
+ActiveAntiPhish 0.1.0	GNU-GPL-3.0
+Chad Baxter <cbax@doslabelectronics.com>
+Saturate the bad guys' databases.
+
+USAGE:
+    aap [FLAGS] [OPTIONS] --time <run_time> --threads <threads> --url <url>
+
+FLAGS:
+    -g, --debug      Locks application to one thread and displays HTTP response data.
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -c, --ccn <ccn_field>             The form field where a credit card number should be populated.
+    -v, --cvv <cvv_field>             The form field where a credit card verification value should be populated.
+    -d, --domain <domain>             The domain of the email server associated with your organization (otherwise random domains will be used). For example: example.com or mail.example.com
+    -e, --email <email_field>         The form field where an email should be populated.
+    -x, --exp <exp_field>             The form field where a credit card expiration date should be populated.
+    -f, --fname <first_name_field>    The form field where a first name should be populated.
+    -l, --lname <last_name_field>     The form field where a last name should be populated.
+    -p, --pass <password_field>       The form field where an password should be populated.
+    -o, --phone <phone_field>         The form field where an phone number should be populated.
+    -t, --time <run_time>             Number of seconds until program exits.
+    -n, --threads <threads>           Number of threads to use. Default: 20
+    -u, --url <url>                   The path to the endpoint to POST fake data to.
+```
 
 Phish Kit Collection
 ---
