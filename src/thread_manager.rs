@@ -2,6 +2,8 @@ use crate::types::*;
 use crate::request_builder::*;
 use crate::generator::*;
 
+use std::io::Write;
+
 pub fn execute(fields: PostFields, url: String, domain: String, threads: u64, debug: bool) {
     for _ in 0..threads {
         let fields_clone = fields.clone();
@@ -30,10 +32,13 @@ pub fn execute(fields: PostFields, url: String, domain: String, threads: u64, de
                 ) {
                     Ok(o) => Some(o),
                     Err(e) => {
+                        println!("{:?}", e);
                         if debug_clone1 {
                             println!("{:?}", e);
+                            std::io::stdout().flush().ok().expect("Could not flush stdout");
                         } else {
-                            eprint!("✘");
+                            eprint!("x");
+                            std::io::stderr().flush().ok().expect("Could not flush stdout");
                         }
                         None
                   }
@@ -42,13 +47,20 @@ pub fn execute(fields: PostFields, url: String, domain: String, threads: u64, de
                     let res = response.unwrap();
                     if res.status().is_success() | res.status().is_redirection() {
                         if debug_clone1 {
-                            println!("{:?}", res.headers());
-                            println!("{:?}", res.text());
+                            println!("{:?}", res);
+                            std::io::stdout().flush().ok().expect("Could not flush stdout");
                         } else {
-                            print!("✔");
+                            print!(".");
+                            std::io::stdout().flush().ok().expect("Could not flush stdout");
                         }
                     } else {
-                        print!("✘");
+                        if debug_clone1 {
+                            println!("{:?}", res);
+                            std::io::stdout().flush().ok().expect("Could not flush stdout");
+                        } else {
+                            print!("x");
+                            std::io::stdout().flush().ok().expect("Could not flush stdout");
+                        }
                     }
                 }
             }

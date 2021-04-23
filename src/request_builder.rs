@@ -32,6 +32,6 @@ pub fn build_form(fields: PostFields, data: PostData) -> multipart::Form {
 }
 
 pub fn build_request(form: multipart::Form, url: String) -> Request {
-    let client = reqwest::blocking::Client::new();
+    let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).build().unwrap();
     return client.post(url).multipart(form).build().unwrap();
 }
