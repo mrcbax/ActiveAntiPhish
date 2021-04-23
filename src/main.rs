@@ -208,6 +208,11 @@ fn main() {
             std::process::exit(1);
         }
     };
-    execute(fields, url, domain, 1, matches.is_present("debug"));
+
+    if matches.is_present("debug") {
+        execute(fields, url, domain, 1, true);
+    } else {
+        execute(fields, url, domain, threads, false);
+    }
     std::thread::sleep(std::time::Duration::from_secs(sleep));
 }
