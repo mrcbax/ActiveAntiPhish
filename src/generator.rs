@@ -56,5 +56,5 @@ fn generate_email(fname: String, lname: String, domain: String) -> String {
         4 => format!("{}{}{}@{}", fname.get(0..1).unwrap(), lname, rand_digit, dom).to_lowercase(),
         5 => format!("{}{}{}@{}", fname, lname.get(0..1).unwrap(), rand_digit, dom).to_lowercase(),
         _ => format!("{}{}@{}", fname, lname, dom).to_lowercase()
-    }
+    };
 }
