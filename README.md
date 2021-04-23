@@ -22,7 +22,7 @@ You can use the ActiveAntiPhish command line application by compiling it with th
 ## `aap` Help
 
 ```
-ActiveAntiPhish 0.1.0	GNU-GPL-3.0
+ActiveAntiPhish 0.1.1	GNU-GPL-3.0
 Chad Baxter <cbax@doslabelectronics.com>
 Saturate the bad guys' databases.
 
