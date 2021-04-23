@@ -32,7 +32,6 @@ pub fn execute(fields: PostFields, url: String, domain: String, threads: u64, de
                 ) {
                     Ok(o) => Some(o),
                     Err(e) => {
-                        println!("{:?}", e);
                         if debug_clone1 {
                             println!("{:?}", e);
                             std::io::stdout().flush().ok().expect("Could not flush stdout");
