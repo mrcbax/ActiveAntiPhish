@@ -1,6 +1,6 @@
 [package]
 name = "aap"
-version = "0.1.1"
+version = "0.2.1"
 authors = ["Chad Baxter <cbax@doslabelectronics.com>"]
 edition = "2018"
 description = "Saturate the bad guys' databases."

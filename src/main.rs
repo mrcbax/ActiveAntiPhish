@@ -23,6 +23,33 @@ fn main() {
                 .required(true)
         )
         .arg(
+            Arg::with_name("multipart")
+                .help("The form uses multipart data.")
+                .short("-m")
+                .long("--multipart")
+                .takes_value(false)
+                .multiple(false)
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("urlencoded")
+                .help("The form uses www-urlencoded data.")
+                .short("-w")
+                .long("--urlencoded")
+                .takes_value(false)
+                .multiple(false)
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("url")
+                .help("The path to the endpoint to POST fake data to.")
+                .short("-u")
+                .long("--url")
+                .takes_value(true)
+                .multiple(false)
+                .required(true)
+        )
+        .arg(
             Arg::with_name("domain")
                 .help("The domain of the email server associated with your organization (otherwise random domains will be used). For example: example.com or mail.example.com")
                 .short("-d")
@@ -209,10 +236,24 @@ fn main() {
         }
     };
 
+    let mut form_type: u8 = 0;
+    if matches.is_present("multipart") {
+        form_type = form_type + 1;
+    }
+    if matches.is_present("urlencoded") {
+        form_type = form_type + 1;
+    }
+
+    if form_type == 0 {
+        eprintln!("Must specify either URLEncoded or Multipart for form data format.");
+        std::process::exit(1);
+    }
+
+
     if matches.is_present("debug") {
-        execute(fields, url, domain, 1, true);
+        execute(form_type, fields, url, domain, 1, true);
     } else {
-        execute(fields, url, domain, threads, false);
+        execute(form_type, fields, url, domain, threads, false);
     }
     std::thread::sleep(std::time::Duration::from_secs(sleep));
 }

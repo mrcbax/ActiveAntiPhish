@@ -22,7 +22,7 @@ You can use the ActiveAntiPhish command line application by compiling it with th
 ## `aap` Help
 
 ```
-ActiveAntiPhish 0.1.1	GNU-GPL-3.0
+ActiveAntiPhish 0.2.1	GNU-GPL-3.0
 Chad Baxter <cbax@doslabelectronics.com>
 Saturate the bad guys' databases.
 
@@ -30,14 +30,17 @@ USAGE:
     aap [FLAGS] [OPTIONS] --time <run_time> --threads <threads> --url <url>
 
 FLAGS:
-    -g, --debug      Locks application to one thread and displays HTTP response data.
-    -h, --help       Prints help information
-    -V, --version    Prints version information
+    -g, --debug         Locks application to one thread and displays HTTP response data.
+    -h, --help          Prints help information
+    -m, --multipart     The form uses multipart data.
+    -w, --urlencoded    The form uses www-urlencoded data.
+    -V, --version       Prints version information
 
 OPTIONS:
     -c, --ccn <ccn_field>             The form field where a credit card number should be populated.
     -v, --cvv <cvv_field>             The form field where a credit card verification value should be populated.
-    -d, --domain <domain>             The domain of the email server associated with your organization (otherwise random domains will be used). For example: example.com or mail.example.com
+    -d, --domain <domain>             The domain of the email server associated with your organization (otherwise random
+                                      domains will be used). For example: example.com or mail.example.com
     -e, --email <email_field>         The form field where an email should be populated.
     -x, --exp <exp_field>             The form field where a credit card expiration date should be populated.
     -f, --fname <first_name_field>    The form field where a first name should be populated.
