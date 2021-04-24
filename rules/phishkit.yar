@@ -232,6 +232,7 @@ rule phishkit_uids {
         $172 = "sameuletijoro"
         $173 = "izzyeemoney"
         $174 = "Settingan From Name/Email"
+        $175 = "XBALTI" nocase
 
     condition:
         any of them
@@ -267,7 +268,11 @@ rule phishkit_amazon {
         hash.sha256(0, filesize) ==
         "ff82d61087f9ef12e6ff43c8f40c3a33200a340c26dccd92a5142f153f441e43" or
         hash.sha256(0, filesize) ==
-        "f6002679aa5401afc6c1612ba81d64e71a5115817ee8115f797bd4a4015b1d67"
+        "f6002679aa5401afc6c1612ba81d64e71a5115817ee8115f797bd4a4015b1d67" or
+        hash.sha256(0, filesize) ==
+        "b36a436adff6d98ebfe70a5cfe68e65010d6e8fe7b861496b207a95a8d5cedbf" or
+        hash.sha256(0, filesize) ==
+        "397efd8be85e38cfd0f5d938977f8ac4f5f3d6c54b365e0ce53ae9e5f72ba556"
 }
 
 rule phishkit_apple {
@@ -294,7 +299,11 @@ rule phishkit_apple {
         hash.sha256(0, filesize) ==
         "d4800d5b5dae03411d1bcd85d230840edf93e49e5e9dc2cd95751a58165ce931" or
         hash.sha256(0, filesize) ==
-        "b77720d888f5153e0c569d0fac3d456ef962472ca790f744a1631097be6c418e"
+        "b77720d888f5153e0c569d0fac3d456ef962472ca790f744a1631097be6c418e" or
+        hash.sha256(0, filesize) ==
+        "396898a10b7df1d8dc2cbff801ab9c468f733b915afc2e63372256bd02cfce93" or
+        hash.sha256(0, filesize) ==
+        "04db6a464a38c110039406e5dbe80cc09526d0eb34d36df335eeb543db5a9248"
 
 }
 
@@ -544,7 +553,9 @@ rule phishkit_paypal {
         hash.sha256(0, filesize) ==
         "1aa6ca5d2cda259317e231e7dd518f6b0bb68b1ed50c0773b6d6fc47819e6673" or
         hash.sha256(0, filesize) ==
-        "e19353fc5815fc6fec72e0db66dca7c2efbee9d58fe4e471942c07a764dc1ce0"
+        "e19353fc5815fc6fec72e0db66dca7c2efbee9d58fe4e471942c07a764dc1ce0" or
+        hash.sha256(0, filesize) ==
+        "27bc6589ea394df4ecfa350c448dea8ab055f8da9d0fb4d8fdb9b128e429e798"
 }
 
 rule phishkit_adobe {
@@ -594,7 +605,17 @@ rule phishkit_banking {
         hash.sha256(0, filesize) ==
         "81773583cfacd55287833896048da4ca1aa3bfff5be10080d11efc3419a53428" or
         hash.sha256(0, filesize) ==
-        "5cc3fdc73b1d559832fede5f1af789fb65ce8f2f1f7f1e9109bbf5a7b355fa4f"
+        "5cc3fdc73b1d559832fede5f1af789fb65ce8f2f1f7f1e9109bbf5a7b355fa4f" or
+        hash.sha256(0, filesize) ==
+        "f5bb88065e8e6017c43f237dcbd635538a8e60d7c4297a30f306aa4dbe37b2bc" or
+        hash.sha256(0, filesize) ==
+        "d5541b9eb60735954c68ef4e9a69aa8624e5c6c6028d877e17ccc7fafc1e74a2" or
+        hash.sha256(0, filesize) ==
+        "abbee02ce3d8d085fabf0bdca0495581a06178d6669e4fb0bb898516ef979526" or
+        hash.sha256(0, filesize) ==
+        "80f58ef6b091b86d5b9eeee78947d82ecb04d82b7076ee6858437a6443bbfee7" or
+        hash.sha256(0, filesize) ==
+        "2d4f444893784b2cce566db0fb89c0db3f82dcb9dc1cb3c7ba4eed027ccf72dc"
 
 }
 
