@@ -22,7 +22,7 @@ You can use the ActiveAntiPhish command line application by downloading the linu
 ## `aap` Help
 
 ```
-ActiveAntiPhish 0.2.1	GNU-GPL-3.0
+ActiveAntiPhish 0.3.0	GNU-GPL-3.0
 Chad Baxter <cbax@doslabelectronics.com>
 Saturate the bad guys' databases.
 
@@ -31,6 +31,7 @@ USAGE:
 
 FLAGS:
     -g, --debug         Locks application to one thread and displays HTTP response data.
+    -r, --getparams     The form uses GET parameterized data.
     -h, --help          Prints help information
     -m, --multipart     The form uses multipart data.
     -w, --urlencoded    The form uses www-urlencoded data.
