@@ -4,7 +4,7 @@ use crate::generator::*;
 
 use std::io::Write;
 
-pub fn execute(form_type: u8, fields: PostFields, url: String, domain: String, threads: u64, debug: bool) {
+pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, domain: String, threads: u64, debug: bool) {
     for _ in 0..threads {
         let fields_clone = fields.clone();
         let domain_clone = domain.clone();
@@ -21,7 +21,7 @@ pub fn execute(form_type: u8, fields: PostFields, url: String, domain: String, t
                 let form_type_clone1 = form_type_clone.clone();
                 let client = reqwest::blocking::Client::builder().redirect(reqwest::redirect::Policy::none()).build().unwrap();
                 let response = match client.execute(
-                    if form_type_clone1 == 1 {
+                    if form_type_clone1.0 {
                         build_request(
                             Some(
                                 build_form_multipart(
@@ -33,9 +33,10 @@ pub fn execute(form_type: u8, fields: PostFields, url: String, domain: String, t
                                 )
                             ),
                             None,
+                            None,
                             url_clone1
                         )
-                    } else {
+                    } else if form_type_clone1.1 {
                         build_request(
                             None,
                             Some(
@@ -47,8 +48,27 @@ pub fn execute(form_type: u8, fields: PostFields, url: String, domain: String, t
                                     )
                                 )
                             ),
+                            None,
                             url_clone1
                         )
+                    } else if form_type_clone1.2 {
+                        build_request(
+                            None,
+                            None,
+                            Some(
+                                build_form_getencoded(
+                                    fields_clone1,
+                                    generate_from_fields(
+                                        fields_clone2,
+                                        domain_clone1
+                                    )
+                                )
+                            ),
+                            url_clone1
+                        )
+                    } else {
+                        eprintln!("Query format not found.");
+                        std::process::exit(0);
                     }
                 ) {
                     Ok(o) => Some(o),

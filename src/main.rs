@@ -41,13 +41,13 @@ fn main() {
                 .required(false)
         )
         .arg(
-            Arg::with_name("url")
-                .help("The path to the endpoint to POST fake data to.")
-                .short("-u")
-                .long("--url")
-                .takes_value(true)
+            Arg::with_name("getparams")
+                .help("The form uses GET parameterized data.")
+                .short("-r")
+                .long("--getparams")
+                .takes_value(false)
                 .multiple(false)
-                .required(true)
+                .required(false)
         )
         .arg(
             Arg::with_name("domain")
@@ -236,16 +236,10 @@ fn main() {
         }
     };
 
-    let mut form_type: u8 = 0;
-    if matches.is_present("multipart") {
-        form_type = form_type + 1;
-    }
-    if matches.is_present("urlencoded") {
-        form_type = form_type + 1;
-    }
+    let form_type: (bool, bool, bool) = (matches.is_present("multipart"), matches.is_present("urlencoded"), matches.is_present("getparams"));
 
-    if form_type == 0 {
-        eprintln!("Must specify either URLEncoded or Multipart for form data format.");
+    if !(form_type.0 | form_type.1 | form_type.2) {
+        eprintln!("Must specify either URLEncoded, GETParams or Multipart for form data format.");
         std::process::exit(1);
     }
 
