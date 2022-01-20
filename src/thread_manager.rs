@@ -4,7 +4,7 @@ use crate::generator::*;
 
 use std::io::Write;
 
-pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, domain: String, threads: u64, debug: bool) {
+pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, domain: String, threads: u64, redirect: bool, debug: bool) {
     for _ in 0..threads {
         let fields_clone = fields.clone();
         let domain_clone = domain.clone();
@@ -34,7 +34,8 @@ pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, d
                             ),
                             None,
                             None,
-                            url_clone1
+                            url_clone1,
+                            redirect
                         )
                     } else if form_type_clone1.1 {
                         build_request(
@@ -49,7 +50,8 @@ pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, d
                                 )
                             ),
                             None,
-                            url_clone1
+                            url_clone1,
+                            redirect
                         )
                     } else if form_type_clone1.2 {
                         build_request(
@@ -64,7 +66,8 @@ pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, d
                                     )
                                 )
                             ),
-                            url_clone1
+                            url_clone1,
+                            redirect
                         )
                     } else {
                         eprintln!("Query format not found.");

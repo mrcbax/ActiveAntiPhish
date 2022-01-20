@@ -95,15 +95,21 @@ pub fn build_form_getencoded(fields: PostFields, data: PostData) -> std::collect
     return form;
 }
 
-pub fn build_request(multipart: Option<multipart::Form>, urlencoded: Option<std::collections::HashMap<String, String>>, getencoded: Option<std::collections::HashMap<String, String>>, url: String) -> Request {
+pub fn build_request(multipart: Option<multipart::Form>, urlencoded: Option<std::collections::HashMap<String, String>>, getencoded: Option<std::collections::HashMap<String, String>>, url: String, redirect: bool) -> Request {
+    let redirect_value;
+    if redirect {
+        redirect_value = reqwest::redirect::Policy::limited(5);
+    } else {
+        redirect_value = reqwest::redirect::Policy::none();
+    }
     if multipart.is_some() {
-        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).build().unwrap();
+        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
         return client.post(url).multipart(multipart.unwrap()).build().unwrap();
     } else if urlencoded.is_some() {
-        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).build().unwrap();
+        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
         return client.post(url).form(&urlencoded.unwrap()).build().unwrap();
     } else {
-        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).build().unwrap();
+        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
         return client.post(url).query(&getencoded.unwrap()).build().unwrap();
     }
 }

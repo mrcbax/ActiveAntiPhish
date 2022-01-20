@@ -50,6 +50,15 @@ fn main() {
                 .required(false)
         )
         .arg(
+            Arg::with_name("ignore")
+                .help("Ignore redirects.")
+                .short("-i")
+                .long("--noredir")
+                .takes_value(false)
+                .multiple(false)
+                .required(false)
+        )
+        .arg(
             Arg::with_name("domain")
                 .help("The domain of the email server associated with your organization (otherwise random domains will be used). For example: example.com or mail.example.com")
                 .short("-d")
@@ -264,9 +273,9 @@ fn main() {
 
 
     if matches.is_present("debug") {
-        execute(form_type, fields, url, domain, 1, true);
+        execute(form_type, fields, url, domain, 1, matches.is_present("ignore"), true);
     } else {
-        execute(form_type, fields, url, domain, threads, false);
+        execute(form_type, fields, url, domain, threads, matches.is_present("ignore"), false);
     }
     std::thread::sleep(std::time::Duration::from_secs(sleep));
 }
