@@ -151,6 +151,15 @@ fn main() {
                 .required(false)
         )
         .arg(
+            Arg::with_name("custom")
+                .help("Provide a custom field name and data <name:data>.")
+                .short("-s")
+                .long("--custom")
+                .takes_value(true)
+                .multiple(true)
+                .required(false)
+        )
+        .arg(
             Arg::with_name("debug")
                 .help("Locks application to one thread and displays HTTP response data.")
                 .short("-g")
@@ -193,6 +202,16 @@ fn main() {
         Some(s) => Some(s.to_string()),
         None => None
     };
+
+    if let Some(custom_field) = matches.values_of("custom") {
+        for field in custom_field {
+            if field.contains(":") {
+                fields.custom.push(field.to_string());
+            } else {
+                eprintln!("custom field is missing `:` separator.");
+            }
+        }
+    }
 
     let url = match matches.value_of("url") {
         Some(s) => s.to_string(),

@@ -88,6 +88,10 @@ pub fn build_form_getencoded(fields: PostFields, data: PostData) -> std::collect
     if fields.cvv.is_some() & data.cvv.is_some() {
         form.insert(fields.cvv.unwrap().to_string(), data.cvv.unwrap());
     }
+    for custom_field in fields.custom {
+        let split_field: Vec<&str> = custom_field.split(':').collect();
+        form.insert(split_field[0].to_string(), split_field[1].to_string());
+    }
     return form;
 }
 
