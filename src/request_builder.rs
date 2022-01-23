@@ -99,7 +99,7 @@ pub fn build_request(multipart: Option<multipart::Form>, urlencoded: Option<std:
     use reqwest::header;
     let mut headers = header::HeaderMap::new();
     for cookie in cookies {
-        headers.insert("Cookie: ", header::HeaderValue::from_static(cookie.as_str()));
+        headers.insert("Cookie: ", header::HeaderValue::from_str(cookie.as_str()).unwrap());
     }
     let redirect_value;
     if redirect {

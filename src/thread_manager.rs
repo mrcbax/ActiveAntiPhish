@@ -17,6 +17,7 @@ pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, d
                 let url_clone1 = url_clone.clone();
                 let fields_clone1 = fields_clone.clone();
                 let fields_clone2 = fields_clone.clone();
+                let cookies_clone = fields_clone.clone().cookies;
                 let debug_clone1 = debug_clone.clone();
                 let form_type_clone1 = form_type_clone.clone();
                 let client = reqwest::blocking::Client::builder().redirect(reqwest::redirect::Policy::none()).build().unwrap();
@@ -35,7 +36,8 @@ pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, d
                             None,
                             None,
                             url_clone1,
-                            redirect
+                            redirect,
+                            cookies_clone
                         )
                     } else if form_type_clone1.1 {
                         build_request(
@@ -51,7 +53,8 @@ pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, d
                             ),
                             None,
                             url_clone1,
-                            redirect
+                            redirect,
+                            cookies_clone
                         )
                     } else if form_type_clone1.2 {
                         build_request(
@@ -67,7 +70,8 @@ pub fn execute(form_type: (bool, bool, bool), fields: PostFields, url: String, d
                                 )
                             ),
                             url_clone1,
-                            redirect
+                            redirect,
+                            cookies_clone
                         )
                     } else {
                         eprintln!("Query format not found.");
