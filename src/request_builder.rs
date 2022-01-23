@@ -28,6 +28,10 @@ pub fn build_form_multipart(fields: PostFields, data: PostData) -> multipart::Fo
     if fields.cvv.is_some() & data.cvv.is_some() {
         form = form.text(fields.cvv.unwrap().to_string(), data.cvv.unwrap());
     }
+    for custom_field in fields.custom {
+        let split_field: Vec<&str> = custom_field.split(':').collect();
+        form = form.text(split_field[0].to_string(), split_field[1].to_string());
+    }
     return form;
 }
 
@@ -57,6 +61,10 @@ pub fn build_form_urlencoded(fields: PostFields, data: PostData) -> std::collect
     }
     if fields.cvv.is_some() & data.cvv.is_some() {
         form.insert(fields.cvv.unwrap().to_string(), data.cvv.unwrap());
+    }
+    for custom_field in fields.custom {
+        let split_field: Vec<&str> = custom_field.split(':').collect();
+        form.insert(split_field[0].to_string(), split_field[1].to_string());
     }
     return form;
 }
@@ -96,10 +104,14 @@ pub fn build_form_getencoded(fields: PostFields, data: PostData) -> std::collect
 }
 
 pub fn build_request(multipart: Option<multipart::Form>, urlencoded: Option<std::collections::HashMap<String, String>>, getencoded: Option<std::collections::HashMap<String, String>>, url: String, redirect: bool, cookies: Vec<String>) -> Request {
-    use reqwest::header;
-    let mut headers = header::HeaderMap::new();
-    for cookie in cookies {
-        headers.insert("Cookie: ", header::HeaderValue::from_str(cookie.as_str()).unwrap());
+    use reqwest::{cookie::Jar, Url};
+    let mut jar: Option<reqwest::cookie::Jar> = None;
+    if cookies.len() > 0 {
+        let tempjar = Jar::default();
+        for cookie in cookies {
+            tempjar.add_cookie_str(cookie.as_str(), &url.parse::<Url>().unwrap());
+        }
+        jar = Some(tempjar);
     }
     let redirect_value;
     if redirect {
@@ -107,14 +119,27 @@ pub fn build_request(multipart: Option<multipart::Form>, urlencoded: Option<std:
     } else {
         redirect_value = reqwest::redirect::Policy::none();
     }
-    if multipart.is_some() {
-        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).default_headers(headers).build().unwrap();
-        return client.post(url).multipart(multipart.unwrap()).build().unwrap();
-    } else if urlencoded.is_some() {
-        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
-        return client.post(url).form(&urlencoded.unwrap()).build().unwrap();
+    if jar.is_some() {
+        if multipart.is_some() {
+            let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).cookie_store(true).cookie_provider(std::sync::Arc::new(jar.unwrap())).redirect(redirect_value).build().unwrap();
+            return client.post(url).multipart(multipart.unwrap()).build().unwrap();
+        } else if urlencoded.is_some() {
+            let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).cookie_store(true).cookie_provider(std::sync::Arc::new(jar.unwrap())).redirect(redirect_value).build().unwrap();
+            return client.post(url).form(&urlencoded.unwrap()).build().unwrap();
+        } else {
+            let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).cookie_store(true).cookie_provider(std::sync::Arc::new(jar.unwrap())).redirect(redirect_value).build().unwrap();
+            return client.post(url).query(&getencoded.unwrap()).build().unwrap();
+        }
     } else {
-        let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
-        return client.post(url).query(&getencoded.unwrap()).build().unwrap();
+        if multipart.is_some() {
+            let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
+            return client.post(url).multipart(multipart.unwrap()).build().unwrap();
+        } else if urlencoded.is_some() {
+            let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
+            return client.post(url).form(&urlencoded.unwrap()).build().unwrap();
+        } else {
+            let client = reqwest::blocking::Client::builder().user_agent(fakeit::user_agent::random_platform()).redirect(redirect_value).build().unwrap();
+            return client.post(url).query(&getencoded.unwrap()).build().unwrap();
+        }
     }
 }

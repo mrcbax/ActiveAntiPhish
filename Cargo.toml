@@ -27,4 +27,4 @@ spinners = "1.2.0"
 
 [dependencies.reqwest]
 version = "0.11.3"
-features = ["multipart", "blocking"]
+features = ["multipart", "blocking", "cookies"]

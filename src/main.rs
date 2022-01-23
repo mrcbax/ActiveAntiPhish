@@ -171,7 +171,7 @@ fn main() {
         .arg(
             Arg::with_name("cookie")
                 .help("Provide a cookie name and data <name=data>.")
-                .short("-o")
+                .short("-k")
                 .long("--cookie")
                 .takes_value(true)
                 .multiple(true)
