@@ -8,7 +8,8 @@ pub struct PostFields {
     pub ccn: Option<String>,
     pub exp: Option<String>,
     pub cvv: Option<String>,
-    pub custom: Vec<String>
+    pub custom: Vec<String>,
+    pub cookies: Vec<String>
 }
 
 #[derive(Default)]
@@ -21,5 +22,6 @@ pub struct PostData {
     pub ccn: Option<String>,
     pub exp: Option<String>,
     pub cvv: Option<String>,
-    pub custom: Vec<String>
+    pub custom: Vec<String>,
+    pub cookies: Vec<String>
 }

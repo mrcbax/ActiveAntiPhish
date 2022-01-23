@@ -169,6 +169,15 @@ fn main() {
                 .required(false)
         )
         .arg(
+            Arg::with_name("cookie")
+                .help("Provide a cookie name and data <name=data>.")
+                .short("-o")
+                .long("--cookie")
+                .takes_value(true)
+                .multiple(true)
+                .required(false)
+        )
+        .arg(
             Arg::with_name("debug")
                 .help("Locks application to one thread and displays HTTP response data.")
                 .short("-g")
@@ -218,6 +227,16 @@ fn main() {
                 fields.custom.push(field.to_string());
             } else {
                 eprintln!("custom field is missing `:` separator.");
+            }
+        }
+    }
+
+    if let Some(cookies) = matches.values_of("cookie") {
+        for cookie in cookies {
+            if cookie.contains("=") {
+                fields.cookies.push(cookie.to_string());
+            } else {
+                eprintln!("cookie is missing `=` separator.");
             }
         }
     }
