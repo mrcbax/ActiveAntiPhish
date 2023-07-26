@@ -1,12 +1,12 @@
-use clap::{App, Arg, crate_authors, crate_description, crate_version};
+use clap::{crate_authors, crate_description, crate_version, App, Arg};
 
-pub mod types;
-pub mod thread_manager;
-pub mod request_builder;
 pub mod generator;
+pub mod request_builder;
+pub mod thread_manager;
+pub mod types;
 
-use types::PostFields;
 use thread_manager::*;
+use types::PostFields;
 
 fn main() {
     let matches = App::new("ActiveAntiPhish")
@@ -113,7 +113,7 @@ fn main() {
                 .required(false)
         )
         .arg(
-            Arg::with_name("first_name_field")
+            Arg::with_name("fname_field")
                 .help("The form field where a first name should be populated.")
                 .short("-f")
                 .long("--fname")
@@ -122,7 +122,7 @@ fn main() {
                 .required(false)
         )
         .arg(
-            Arg::with_name("last_name_field")
+            Arg::with_name("lname_field")
                 .help("The form field where a last name should be populated.")
                 .short("-l")
                 .long("--lname")
@@ -190,35 +190,35 @@ fn main() {
     let mut fields: PostFields = PostFields::default();
     fields.email = match matches.value_of("email_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
     fields.password = match matches.value_of("password_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
     fields.phone = match matches.value_of("phone_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
     fields.fname = match matches.value_of("fname_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
     fields.lname = match matches.value_of("lname_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
     fields.ccn = match matches.value_of("ccn_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
     fields.exp = match matches.value_of("exp_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
     fields.cvv = match matches.value_of("cvv_field") {
         Some(s) => Some(s.to_string()),
-        None => None
+        None => None,
     };
 
     if let Some(custom_field) = matches.values_of("custom") {
@@ -251,30 +251,26 @@ fn main() {
 
     let domain = match matches.value_of("domain") {
         Some(s) => s.to_string(),
-        None => String::new()
+        None => String::new(),
     };
 
     let threads: u64 = match matches.value_of("threads") {
-        Some(s) => {
-            match s.parse::<u64>() {
-                Ok(o) => o,
-                Err(_) => {
-                    eprintln!("Number of threads is not a number!");
-                    std::process::exit(1);
-                }
+        Some(s) => match s.parse::<u64>() {
+            Ok(o) => o,
+            Err(_) => {
+                eprintln!("Number of threads is not a number!");
+                std::process::exit(1);
             }
         },
-        None => 20
+        None => 20,
     };
 
     let sleep: u64 = match matches.value_of("run_time") {
-        Some(s) => {
-            match s.parse::<u64>() {
-                Ok(o) => o,
-                Err(_) => {
-                    eprintln!("Run time is not a number!");
-                    std::process::exit(1);
-                }
+        Some(s) => match s.parse::<u64>() {
+            Ok(o) => o,
+            Err(_) => {
+                eprintln!("Run time is not a number!");
+                std::process::exit(1);
             }
         },
         None => {
@@ -283,18 +279,37 @@ fn main() {
         }
     };
 
-    let form_type: (bool, bool, bool) = (matches.is_present("multipart"), matches.is_present("urlencoded"), matches.is_present("getparams"));
+    let form_type: (bool, bool, bool) = (
+        matches.is_present("multipart"),
+        matches.is_present("urlencoded"),
+        matches.is_present("getparams"),
+    );
 
     if !(form_type.0 | form_type.1 | form_type.2) {
         eprintln!("Must specify either URLEncoded, GETParams or Multipart for form data format.");
         std::process::exit(1);
     }
 
-
     if matches.is_present("debug") {
-        execute(form_type, fields, url, domain, 1, matches.is_present("ignore"), true);
+        execute(
+            form_type,
+            fields,
+            url,
+            domain,
+            1,
+            matches.is_present("ignore"),
+            true,
+        );
     } else {
-        execute(form_type, fields, url, domain, threads, matches.is_present("ignore"), false);
+        execute(
+            form_type,
+            fields,
+            url,
+            domain,
+            threads,
+            matches.is_present("ignore"),
+            false,
+        );
     }
     std::thread::sleep(std::time::Duration::from_secs(sleep));
 }
