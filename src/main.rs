@@ -178,6 +178,15 @@ fn main() {
                 .required(false)
         )
         .arg(
+            Arg::with_name("password_list")
+                .help("Locks application to one thread and displays HTTP response data.")
+                .short("-L")
+                .long("--list")
+                .takes_value(true)
+                .multiple(false)
+                .required(false)
+        )
+        .arg(
             Arg::with_name("debug")
                 .help("Locks application to one thread and displays HTTP response data.")
                 .short("-g")
@@ -254,6 +263,11 @@ fn main() {
         None => String::new(),
     };
 
+    let password_list: Option<String> = match matches.value_of("password_list") {
+        Some(s) => Some(s.to_string()),
+        None => None,
+    };
+
     let threads: u64 = match matches.value_of("threads") {
         Some(s) => match s.parse::<u64>() {
             Ok(o) => o,
@@ -298,6 +312,7 @@ fn main() {
             domain,
             1,
             matches.is_present("ignore"),
+            password_list,
             true,
         );
     } else {
@@ -308,6 +323,7 @@ fn main() {
             domain,
             threads,
             matches.is_present("ignore"),
+            password_list,
             false,
         );
     }

@@ -26,5 +26,5 @@ rand = "0.8.3"
 spinners = "1.2.0"
 
 [dependencies.reqwest]
-version = "0.11.3"
-features = ["multipart", "blocking", "cookies"]
+version = "0.11.20"
+features = ["multipart", "blocking", "cookies", "rustls-tls"]
