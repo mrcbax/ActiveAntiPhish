@@ -22,7 +22,7 @@ You can use the ActiveAntiPhish command line application by downloading the linu
 ## `aap` Help
 
 ```
-ActiveAntiPhish 0.3.0	GNU-GPL-3.0
+ActiveAntiPhish 0.4.0	GNU-GPL-3.0
 Chad Baxter <cbax@doslabelectronics.com>
 Saturate the bad guys' databases.
 
@@ -33,24 +33,28 @@ FLAGS:
     -g, --debug         Locks application to one thread and displays HTTP response data.
     -r, --getparams     The form uses GET parameterized data.
     -h, --help          Prints help information
+    -i, --noredir       Ignore redirects.
     -m, --multipart     The form uses multipart data.
     -w, --urlencoded    The form uses www-urlencoded data.
     -V, --version       Prints version information
 
 OPTIONS:
-    -c, --ccn <ccn_field>             The form field where a credit card number should be populated.
-    -v, --cvv <cvv_field>             The form field where a credit card verification value should be populated.
-    -d, --domain <domain>             The domain of the email server associated with your organization (otherwise random
-                                      domains will be used). For example: example.com or mail.example.com
-    -e, --email <email_field>         The form field where an email should be populated.
-    -x, --exp <exp_field>             The form field where a credit card expiration date should be populated.
-    -f, --fname <first_name_field>    The form field where a first name should be populated.
-    -l, --lname <last_name_field>     The form field where a last name should be populated.
-    -p, --pass <password_field>       The form field where an password should be populated.
-    -o, --phone <phone_field>         The form field where an phone number should be populated.
-    -t, --time <run_time>             Number of seconds until program exits.
-    -n, --threads <threads>           Number of threads to use. Default: 20
-    -u, --url <url>                   The path to the endpoint to POST fake data to.
+    -c, --ccn <ccn_field>          The form field where a credit card number should be populated.
+    -k, --cookie <cookie>...       Provide a cookie name and data <name=data>.
+    -s, --custom <custom>...       Provide a custom field name and data <name:data>.
+    -v, --cvv <cvv_field>          The form field where a credit card verification value should be populated.
+    -d, --domain <domain>          The domain of the email server associated with your organization (otherwise random
+                                   domains will be used). For example: example.com or mail.example.com
+    -e, --email <email_field>      The form field where an email should be populated.
+    -x, --exp <exp_field>          The form field where a credit card expiration date should be populated.
+    -f, --fname <fname_field>      The form field where a first name should be populated.
+    -l, --lname <lname_field>      The form field where a last name should be populated.
+    -p, --pass <password_field>    The form field where an password should be populated.
+    -L, --list <password_list>     Locks application to one thread and displays HTTP response data.
+    -o, --phone <phone_field>      The form field where an phone number should be populated.
+    -t, --time <run_time>          Number of seconds until program exits.
+    -n, --threads <threads>        Number of threads to use. Default: 20
+    -u, --url <url>                The path to the endpoint to POST fake data to.
 ```
 
 Phish Kit Collection
