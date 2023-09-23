@@ -20,6 +20,10 @@ pub fn generate_from_fields(
     if fields.lname.is_some() {
         data.lname = Some(lname.clone());
     }
+    let ssn = fakeit::person::ssn();
+    if fields.lname.is_some() {
+        data.ssn = Some(ssn.clone());
+    }
     if fields.email.is_some() {
         data.email = Some(generate_email(fname, lname, domain));
     }

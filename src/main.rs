@@ -131,6 +131,15 @@ fn main() {
                 .required(false)
         )
         .arg(
+            Arg::with_name("ssn_field")
+                .help("The form field where a US social security number should be populated.")
+                .short("-S")
+                .long("--social")
+                .takes_value(true)
+                .multiple(false)
+                .required(false)
+        )
+        .arg(
             Arg::with_name("ccn_field")
                 .help("The form field where a credit card number should be populated.")
                 .short("-c")
@@ -214,6 +223,10 @@ fn main() {
         None => None,
     };
     fields.lname = match matches.value_of("lname_field") {
+        Some(s) => Some(s.to_string()),
+        None => None,
+    };
+    fields.ssn = match matches.value_of("ssn_field") {
         Some(s) => Some(s.to_string()),
         None => None,
     };

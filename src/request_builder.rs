@@ -19,6 +19,9 @@ pub fn build_form_multipart(fields: PostFields, data: PostData) -> multipart::Fo
     if fields.lname.is_some() & data.lname.is_some() {
         form = form.text(fields.lname.unwrap().to_string(), data.lname.unwrap());
     }
+    if fields.ssn.is_some() & data.ssn.is_some() {
+        form = form.text(fields.ssn.unwrap().to_string(), data.ssn.unwrap());
+    }
     if fields.ccn.is_some() & data.ccn.is_some() {
         form = form.text(fields.ccn.unwrap().to_string(), data.ccn.unwrap());
     }
@@ -53,6 +56,9 @@ pub fn build_form_urlencoded(fields: PostFields, data: PostData) -> std::collect
     if fields.lname.is_some() & data.lname.is_some() {
         form.insert(fields.lname.unwrap().to_string(), data.lname.unwrap());
     }
+    if fields.ssn.is_some() & data.ssn.is_some() {
+        form.insert(fields.ssn.unwrap().to_string(), data.ssn.unwrap());
+    }
     if fields.ccn.is_some() & data.ccn.is_some() {
         form.insert(fields.ccn.unwrap().to_string(), data.ccn.unwrap());
     }
@@ -86,6 +92,9 @@ pub fn build_form_getencoded(fields: PostFields, data: PostData) -> std::collect
     }
     if fields.lname.is_some() & data.lname.is_some() {
         form.insert(fields.lname.unwrap().to_string(), data.lname.unwrap());
+    }
+    if fields.ssn.is_some() & data.ssn.is_some() {
+        form.insert(fields.ssn.unwrap().to_string(), data.ssn.unwrap());
     }
     if fields.ccn.is_some() & data.ccn.is_some() {
         form.insert(fields.ccn.unwrap().to_string(), data.ccn.unwrap());

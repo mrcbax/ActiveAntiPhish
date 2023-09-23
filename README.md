@@ -22,8 +22,7 @@ You can use the ActiveAntiPhish command line application by downloading the linu
 ## `aap` Help
 
 ```
-ActiveAntiPhish 0.4.0	GNU-GPL-3.0
-Chad Baxter <cbax@doslabelectronics.com>
+ActiveAntiPhish 0.4.1	GNU-GPL-3.0
 Saturate the bad guys' databases.
 
 USAGE:
@@ -53,6 +52,7 @@ OPTIONS:
     -L, --list <password_list>     Locks application to one thread and displays HTTP response data.
     -o, --phone <phone_field>      The form field where an phone number should be populated.
     -t, --time <run_time>          Number of seconds until program exits.
+    -S, --social <ssn_field>       The form field where a US social security number should be populated.
     -n, --threads <threads>        Number of threads to use. Default: 20
     -u, --url <url>                The path to the endpoint to POST fake data to.
 ```
